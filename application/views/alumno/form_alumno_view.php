@@ -1,17 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" >
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li ><a href="<?= base_url("index.php/clientes/");?>">Clientes</a></li>
-            <li class="active"><a href="<?= base_url("index.php/clientes/register");?>">Registrar clientes</a></li>
-          </ul>
-        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
-          <h2 class="sub-header">Registro de cliente</h2>
+          <h2 class="sub-header">Registro de Alumno</h2>
           <div>
-          <form role="form" action='<?= base_url();?>index.php/clientes/save' method="post">
+          <form role="form" action='<?= base_url();?>index.php/alumno/registrarAlumno' method="post">
 
 			<div class="row">
 
@@ -81,46 +75,17 @@
 				</div>
 
 			</div>
-			<div class="row">
-
-				<div class="col-xs-12 col-sm-6 col-md-6">
-                    <h4>Empresa donde trabaja:</h4>
-					<div class="form-group">
-                        <input type="text" name="empresa" id="empresa" class="form-control input-sm" placeholder="" tabindex="8">
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-                    <h4>Aproximado de ingresos:</h4>
-					<div class="form-group">
-                        <input type="number" name="ingresos" step="any" id="ingresos" class="form-control input-sm" tabindex="9" value="0">
-					</div>
-				</div>
-
-			</div>
-
-            <div class="row">
-                <div class="col-xs-8 form-group">
-                <h4>Correos:</h4>
-				<input type="email" name="correo0" id="correo0" class="form-control input-sm" placeholder="Correo" tabindex="10">
-			     </div><br><br>
-                <div class="col-xs-8 form-group" id="correos">
-                </div>
-                <button type="button" class="btn btn-md btn-primary" onclick="addCorreo()" >Añadir</button>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 form-group">
-                <h4>Números de teléfono:</h4>
-				<input type="tel" name="telefono0" id="telefono0" class="form-control input-sm" placeholder="Teléfono" tabindex="11">
-			     </div><br><br>
-                <div class="col-xs-8 form-group" id="telefonos">
-                </div>
-                <button type="button" class="btn btn-md btn-primary" onclick="addTelefono()" >Añadir</button>
-            </div>
+			
 
 <br>
 			<div class="row">
-				<div class="col-xs-6 col-md-3"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
-				<div class="col-xs-6 col-md-3"><a href="<?= base_url("index.php/clientes/register");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
+                <div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-3">
+                    <input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
+                <div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-3">
+                    <a href="<?= base_url();?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
+                <div class="col-xs-6 col-md-2"></div>
 			</div>
 		</form>
           </div>

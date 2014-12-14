@@ -54,7 +54,7 @@ $db['default']['password'] = '';
 $db['default']['database'] = 'asistenciasbd';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
@@ -63,7 +63,12 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+$openshiftsocket = getenv('OPENSHIFT_MYSQL_DB_SOCKET');
+//echo "OpenShift socket is [$openshiftsocket]";
 
+if (isset($openshiftsocket)) {
+   ini_set('mysql.default_socket', $openshiftsocket);
+}
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

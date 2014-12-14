@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding-top:50px;" >
+<div class="container-fluid">
     <div style="padding-left:50px;">
         <div class="row">
             
@@ -19,7 +19,9 @@
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
                             <div class="col-xs-12 col-sm-3 col-md-3">
-                                <button type="button" class="btn btn-success">Agregar Alumno(s)</button>
+                                <a id="agregarAlumnos" href="<?= base_url("index.php/alumno/formularioAlumno");?>">
+                                  <button type="button" class="btn btn-success">Registrar Alumno(s)</button>
+                                </a>
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
                         </div>

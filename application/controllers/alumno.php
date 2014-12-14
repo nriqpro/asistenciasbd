@@ -9,29 +9,28 @@ class Alumno extends CI_Controller{
     
     public function index(){
         $query = $this->Alumno_model->getAlumnos();
-        $data['alumnos'] = $query;
-        /*$this->load->view('layouts/header');
-        $this->load->view('layouts/adminSidebar');
-        $this->load->view('layouts/footer');*/
-        
-        $this->load->view('alumnos/alumnos_view',$data);
+        $data['alumnos'] = $query;    
+        $this->load->view('home_view',$data);
     }
 
-    public function cargarRegistroBancos(){
-         $this->load->view('layouts/header');
-        $this->load->view('layouts/adminSidebar');
-        $this->load->view('admin/registroBancos_view');
+    public function formularioAlumno(){
+        $this->load->view('layouts/header');
+        $this->load->view('alumno/form_alumno_view');
         $this->load->view('layouts/footer');
     }
 
-    public function registrarBanco(){
-        $banco = array(
-            'rif_banco' => $this->input->post('rif_banco'),
-            'nombre' => $this->input->post('nombre')
+    public function registrarAlumno(){
+        $alumno = array(
+            'cedula' => $this->input->post('cedula'),
+            'nombre' => $this->input->post('nombre'),
+            'apellido1' => $this->input->post('apellido1')+$this->input->post('apellido2'),
+            'sexo' => $this->input->post('sexo'),
+            'fecha_nac' => $this->input->post('fecha_nac'),  
+            'dir' => $this->input->post('dir'),
         );
 
 
-        $result = $this->Banco_model->addBanco($banco);
+        $result = $this->Alumno_model->addAlumno($alumno);
         $this->index();
         /*$data['message_type']=1;
         $data['message']="Departamento registrado satisfactoriamente";
