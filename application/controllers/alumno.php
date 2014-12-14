@@ -8,9 +8,10 @@ class Alumno extends CI_Controller{
     }
     
     public function index(){
-        $query = $this->Alumno_model->getAlumnos();
-        $data['alumnos'] = $query;    
-        $this->load->view('home_view',$data);
+
+        $this->load->view('layouts/header');
+        $this->load->view('home_view');
+        $this->load->view('layouts/footer');
     }
 
     public function formularioAlumno(){
@@ -23,10 +24,10 @@ class Alumno extends CI_Controller{
         $alumno = array(
             'cedula' => $this->input->post('cedula'),
             'nombre' => $this->input->post('nombre'),
-            'apellido1' => $this->input->post('apellido1')+$this->input->post('apellido2'),
+            'fecha_nac' => $this->input->post('fecha_nac'),
             'sexo' => $this->input->post('sexo'),
-            'fecha_nac' => $this->input->post('fecha_nac'),  
             'dir' => $this->input->post('dir'),
+            'apellido1' => $this->input->post('apellido1')
         );
 
 
