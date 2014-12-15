@@ -53,7 +53,13 @@ class Alumno extends CI_Controller{
                     $data['alumnos'] = $this->Alumno_model->getAlumnosBySeccion($contenido);
         
         
-        echo $tipo." ".$contenido;
+       /* foreach($data['alumnos'] as $alumno){
+            echo $alumno->nombre."<br>";
+            }*/
+                
+        $this->load->view('layouts/header');
+        $this->load->view('alumno/alumnos_view',$data);
+        $this->load->view('layouts/footer');
     }
     
 }
