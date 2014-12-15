@@ -35,12 +35,12 @@
                         foreach($asignaturas as $loop){
                 ?>
                 <tr>
-                  <td><?=$loop->descripcion;?></td>
+                  <td><?=$loop->nombre;?></td>
                   <td><?=$loop->uni_cred;?></td>    
                   <td><?=$loop->nro_horas;?></td>
                   <td>
                       <form action="<?= base_url("index.php/clientes/cargarAsignaturas");?>" method="post" id="contactos">
-                            <input type="hidden" name = "descripcion" value="<?= $loop->descripcion; ?>">
+                            <input type="hidden" name = "descripcion" value="<?= $loop->nombre; ?>">
                             <input type="hidden" name = "uni_cred" value="<?= $loop->uni_cred; ?>">
                             <input type="hidden" name = "nro_horas" value="<?= $loop->nro_horas; ?>">
                            <button class="btn btn-xs btn-primary" type="submit">Ver</input>

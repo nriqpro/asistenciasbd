@@ -15,7 +15,9 @@
             
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
                             <div class="col-xs-12 col-sm-3 col-md-3">
-                                <button type="button" class="btn btn-primary">Ver Alumnos</button>
+                                <a id="agregarAlumnos" href="<?= base_url("index.php/alumno/verAlumnos");?>">
+                                    <button type="button" class="btn btn-primary">Ver Alumnos</button>
+                                </a>
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
                             <div class="col-xs-12 col-sm-3 col-md-3">

@@ -12,7 +12,7 @@ class Asignatura extends CI_Controller{
         $data['asignaturas'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verAsig');
+        $this->load->view('admin/verAsig',$data);
         $this->load->view('layouts/footer');
     }
 
@@ -33,7 +33,7 @@ class Asignatura extends CI_Controller{
 
          $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verAsig');
+        $this->load->view('admin/verAsig',$data);
         $this->load->view('layouts/footer');
     }
 

@@ -13,6 +13,12 @@ class Alumno extends CI_Controller{
         $this->load->view('home_view');
         $this->load->view('layouts/footer');
     }
+    
+     public function verAlumnos(){
+        $this->load->view('layouts/header');
+        $this->load->view('alumno/alumnos_view');
+        $this->load->view('layouts/footer');
+    }
 
     public function formularioAlumno(){
         $this->load->view('layouts/header');
@@ -33,15 +39,21 @@ class Alumno extends CI_Controller{
 
         $result = $this->Alumno_model->addAlumno($alumno);
         $this->index();
-        /*$data['message_type']=1;
-        $data['message']="Departamento registrado satisfactoriamente";
-
-        $query = $this->Departamentos_model->getDepartamentos();
-        $data['departamentos'] = $query;
-        $this->load->view('layouts/header',$data);
-        $this->load->view('layouts/adminSidebar');
-        $this->load->view('admin/gestionDepartamentos_view');
-        $this->load->view('layouts/footer');*/
+    }
+    
+    public function buscarAlumnos(){
+        $tipo = $this->input->post('tipo');
+        $contenido = $this->input->post('contenido');
+        
+        if (strcasecmp($tipo,"Carrera")==0)
+            $data['alumnos'] = $this->Alumno_model->getAlumnosByCarrera($contenido);
+            else if(strcasecmp($tipo,"Materia")==0)
+                $data['alumnos'] = $this->Alumno_model->getAlumnosByMateria($contenido);
+                else if(strcasecmp($tipo,"Seccion")==0) 
+                    $data['alumnos'] = $this->Alumno_model->getAlumnosBySeccion($contenido);
+        
+        
+        echo $tipo." ".$contenido;
     }
     
 }
