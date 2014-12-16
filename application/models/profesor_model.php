@@ -6,6 +6,11 @@
             
         }
        
+       public function getProfesor($profesor){
+           $query = $this->db->query("SELECT * FROM profesor where profesor.ci_profe=?",$profesor);
+            return $query->result();
+       }
+       
        function getProfesores(){
             $query = $this->db->query("SELECT * FROM profesor");
             return $query->result();
@@ -17,15 +22,15 @@
        }
        
        public function updateProfesor($profesor){
-           $this->db->trans_start();
-//           $this->db->trans_begin();
+           $db_debug = $this->db->db_debug; //save setting
+
+           $this->db->db_debug = FALSE; 
            $query = $this->db->query("UPDATE profesor SET ci_profe=?,nombre=?,apellido=?,sexo=?, direc=? WHERE ci_profe=?",$profesor);
-           $this->db->trans_complete(); 
-           if ($this->db->trans_status() === FALSE){
-//                $this->db->trans_rollback();
-               echo "Error actualizando";
-           }
-           $this->db->trans_off();
+
+//           if($data['error'] = $this->db->_error_message("Error"));
+
+           $this->db->db_debug = $db_debug;
+           
             return $query;
        }
    }

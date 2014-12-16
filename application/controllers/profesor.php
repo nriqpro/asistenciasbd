@@ -80,9 +80,11 @@ class Profesor extends CI_Controller{
     }
     
       public function profesorByID(){
+        $profesor= $this->input->post('cedula');
+        $data['profesor'] = $this->profesor_model->getProfesor($profesor);
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verProf');
+        $this->load->view('admin/verProf', $data);
         $this->load->view('layouts/footer');
     }
     
