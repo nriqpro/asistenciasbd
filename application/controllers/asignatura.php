@@ -25,40 +25,63 @@ class Asignatura extends CI_Controller{
     
     public function cargarAsig(){
         $asignaturas = array(
-            'descripcion' => $this->input->post('descricion'),
-            'uni_cred' => $this->input->post('uni_cred'),
-            'nro_horas' => $this->input->post('nro_horas')
-        );
-        $data['asignaturas'] = $asignaturas;
 
-         $this->load->view('layouts/header');
+            'descripcion' => $this->input->post('nombre'),
+            'uni_cred' => $this->input->post('creditos'),
+            'nro_horas' => $this->input->post('horas')
+        );
+        $data['asignaturas'] = $this->asig_model->addAsignatura($asignaturas);
+        $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verAsig',$data);
         $this->load->view('layouts/footer');
     }
-
-//    public function registrarAlumno(){
-//        $alumno = array(
-//            'cedula' => $this->input->post('cedula'),
-//            'nombre' => $this->input->post('nombre'),
-//            'fecha_nac' => $this->input->post('fecha_nac'),
-//            'sexo' => $this->input->post('sexo'),
-//            'dir' => $this->input->post('dir'),
-//            'apellido1' => $this->input->post('apellido1')
-//        );
-//
-//
-//        $result = $this->Alumno_model->addAlumno($alumno);
-//        $this->index();
-        /*$data['message_type']=1;
-        $data['message']="Departamento registrado satisfactoriamente";
-
-        $query = $this->Departamentos_model->getDepartamentos();
-        $data['departamentos'] = $query;
-        $this->load->view('layouts/header',$data);
-        $this->load->view('layouts/adminSidebar');
-        $this->load->view('admin/gestionDepartamentos_view');
-        $this->load->view('layouts/footer');*/
-//    }
     
+    
+    public function cargarEditarAsig(){
+        $asignatura = array(
+            'id'  => $this->input->post('id'),
+            'descripcion' => $this->input->post('descripcion'),
+            'unid' => $this->input->post('uni_cred'),
+            'horas' => $this->input->post('nro_horas'),
+        );
+
+        $data['asignaturas']=$asignatura;
+        $query = $this->asig_model->getAsignaturas();
+        $data['asignaturas'] = $query;
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('asignatura/form_edit_asig',$data);
+        $this->load->view('layouts/footer');
+    }
+    
+     public function editarAsig(){
+        $asignatura = array(
+            'descripcion' => $this->input->post('nombre'),
+            'unid' => $this->input->post('creditos'),
+            'horas' => $this->input->post('horas'),
+            'id' => $this->input->post('id'),
+        );
+        $data['asignaturas']=$asignatura;
+        $result = $this->asig_model->updateAsignatura($asignatura);
+
+        $query = $this->asig_model->getAsignaturas();
+        $data['asignaturas'] = $query;
+         
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/verAsig',$data);
+        $this->load->view('layouts/footer');
+    }
+    
+    
+    public function cargarAsigBuscada(){
+        $asignatura= $this->input->post('nombre');
+        $data['asignaturas'] = $this->asig_model->getAsig($asignatura);
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/verAsig',$data);
+        $this->load->view('layouts/footer');
+    }
+        
 }

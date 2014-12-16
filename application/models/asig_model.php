@@ -12,8 +12,22 @@
        }
 
        public function addAsignatura($asignatura){
-           $query = $this->db->query("INSERT INTO asignatura VALUES (?,?,?,?)",$asignatura);
+           $query = $this->db->query("INSERT INTO asignatura VALUES (cod_asig,?,?,?)",$asignatura);
            return $query;
+       }
+       
+       public function getAsig($asignatura){
+           $query = $this->db->query(
+               " SELECT *
+                 FROM asignatura as asig
+                 WHERE asig.nombre LIKE '$asignatura';"
+           );
+            return $query->result();
+       }
+       
+       function updateAsignatura($asignatura){
+           $query = $this->db->query("UPDATE asignatura SET nombre=?,uni_cred=?,nro_horas=? WHERE cod_asig=?",$asignatura);
+            return $query;
        }
 
    }
