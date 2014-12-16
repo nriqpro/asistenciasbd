@@ -47,8 +47,6 @@ class Asignatura extends CI_Controller{
         );
 
         $data['asignaturas']=$asignatura;
-        $query = $this->asig_model->getAsignaturas();
-        $data['asignaturas'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('asignatura/form_edit_asig',$data);

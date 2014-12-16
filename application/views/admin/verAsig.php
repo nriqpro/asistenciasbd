@@ -25,7 +25,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Codigo:</th>    
+                  <th>Codigo</th>    
                   <th>Descripcion</th>
                   <th>Unid. de credito</th>
                   <th>Numero de horas</th>
