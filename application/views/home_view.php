@@ -135,17 +135,24 @@
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Reportes</h3>
+                        <h3 class="panel-title">Salones</h3>
                     </div>
                     <div class="panel-body">
                        <div class="row">
             
+
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
-                            <div class="col-xs-12 col-sm-3 col-md-3"></div>
-                            <div class="col-xs-12 col-sm-4 col-md-4">
-                                <button type="button" class="btn btn-danger">Ver Reportes</button>
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <a id="verSalones" href="<?= base_url("index.php/salon/verSalones");?>">
+                                    <button type="button" class="btn btn-primary">Ver Salones</button>
+                                </a>
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <a id="agregarSalon" href="<?= base_url("index.php/salon/formularioSalon");?>">
+                                    <button type="button" class="btn btn-primary">agregar Salon</button>
+                                </a>
+                            </div>
                             <div class="col-xs-12 col-sm-2 col-md-2"></div>
                         </div>
                     </div>

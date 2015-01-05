@@ -10,19 +10,22 @@ class Alumno extends CI_Controller{
     public function index(){
 
         $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
         $this->load->view('home_view');
         $this->load->view('layouts/footer');
     }
     
      public function verAlumnos(){
         $this->load->view('layouts/header');
-        $this->load->view('alumno/alumnos_view');
+         $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/alumnos_view');
         $this->load->view('layouts/footer');
     }
 
     public function formularioAlumno(){
         $this->load->view('layouts/header');
-        $this->load->view('alumno/form_alumno_view');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/form_alumno_view');
         $this->load->view('layouts/footer');
     }
 
@@ -41,6 +44,19 @@ class Alumno extends CI_Controller{
         $this->index();
     }
     
+    public function gestionAlumno(){
+        $cedula = $this->input->post('cedula');
+
+
+        $data['alumno'] = $this->Alumno_model->getAlumno($cedula);
+        $data['secciones'] = $this->Alumno_model->getInfoSecciones($cedula);
+
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/gestionAlumno_view',$data);
+        $this->load->view('layouts/footer');
+    }
+
     public function buscarAlumnos(){
         $tipo = $this->input->post('tipo');
         $contenido = $this->input->post('contenido');
@@ -58,8 +74,24 @@ class Alumno extends CI_Controller{
             }*/
                 
         $this->load->view('layouts/header');
-        $this->load->view('alumno/alumnos_view',$data);
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/alumnos_view',$data);
         $this->load->view('layouts/footer');
     }
     
+    public function verHorarioAlumno(){
+       //  $this->load->view('layouts/header');
+        $alumno = array(
+            'cedula' => $this->input->post('cedula'),
+            'nombre' => $this->input->post('nombre'),
+        );
+        $data['alumno'] = $alumno;
+        $data['infoSecciones']= $this->Alumno_model->getInfoSecciones($alumno['cedula']);
+        $data['horario'] = $this->Alumno_model->getHorarioAlumno($alumno['cedula']);
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/horario_view',$data);
+        $this->load->view('layouts/footer');
+    }
 }
+
+?>
