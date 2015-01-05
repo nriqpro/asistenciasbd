@@ -24,20 +24,16 @@ class Carrera extends CI_Controller{
     }
     
     public function registrarCarrera(){
-        $profesor = array(
-            'cedula' => $this->input->post('cedula'),
+        $carreras = array(
+//            'id' => $this->input->post('cedula'),
             'nombre' => $this->input->post('nombre'),
-            'apellido' => $this->input->post('apellido'),
-            'sexo' => $this->input->post('sexo'),
-            'direccion' => $this->input->post('direccion'),
-
         );
-        $data['profesor'] = $this->profesor_model->addProfesor($profesor);
-        $query = $this->asig_model->getProfesores();
-        $data['profesor'] = $query;
+        $data['carreras'] = $this->carrera_model->addCarrera($carreras);
+        $query = $this->carrera_model->getCarreras();
+        $data['carreras'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verProf',$data);
+        $this->load->view('admin/verCarrera',$data);
         $this->load->view('layouts/footer');
     }
     
@@ -56,14 +52,13 @@ class Carrera extends CI_Controller{
     
      public function editarCarrera(){
         $carreras = array(
-            'id' => $this->input->post('id'),
             'nombre' => $this->input->post('nombre'),
-
+            'id' => $this->input->post('id'),
         );
 
         $data['carreras']=$carreras;
         $result = $this->carrera_model->updateCarrera($carreras);
-
+        
         $query = $this->carrera_model->getCarreras();
         $data['carreras'] = $query;
          

@@ -16,8 +16,8 @@
             return $query->result();
        }
        
-       public function addProfesor($profesor){
-           $query = $this->db->query("INSERT INTO profesor VALUES (?,?,?,?,?)",$profesor);
+       public function addCarrera($carreras){
+           $query = $this->db->query("INSERT INTO carrera VALUES (cod_c,?)",$carreras);
            return $query;
        }
        
