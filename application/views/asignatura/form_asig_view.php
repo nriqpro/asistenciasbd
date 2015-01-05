@@ -5,10 +5,10 @@
                 <div class="form-group">
                     <div class="col-lg-5 col-md-5">
 <!--                        Nombre-->
-                        <label for="nombre" class="col-lg-2 control-label">Nombre de la asignatura:</label>
+                        <label for="nombre" class=" control-label">Nombre de la asignatura:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Ejemplo: Calculo I" tabindex="1" required>
 <!--                        Unidades de cred-->
-                        <label for="creditos" class="col-lg-2 control-label">Unidades de credito:</label>
+                        <label for="creditos" class="control-label">Unidades de credito:</label>
                         <select name="creditos" class="form-control"  data-style="btn-primary">
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -18,7 +18,7 @@
                   </select>  
                         
 <!--                        Horas-->  
-                    <label for="horas" class="col-lg-2 control-label">Numero de horas:</label>          
+                    <label for="horas" class="control-label">Numero de horas:</label>          
                     <select name="horas" class="form-control"  data-style="btn-primary">
                           <option value="3">3</option>
                           <option value="4">4</option>
