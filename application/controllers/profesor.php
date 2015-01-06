@@ -32,8 +32,15 @@ class Profesor extends CI_Controller{
             'direccion' => $this->input->post('direccion'),
 
         );
-        $data['profesor'] = $this->profesor_model->addProfesor($profesor);
-        $query = $this->asig_model->getProfesores();
+        $query = $this->profesor_model->getProfesor($profesor['cedula']);
+        
+        if($query == NULL){
+            $data['profesor'] = $this->profesor_model->addProfesor($profesor);
+        }
+        else{
+            $data['err'] = "Error, cedula ya registrada.";
+        }
+        $query = $this->profesor_model->getProfesores();
         $data['profesor'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
@@ -67,10 +74,21 @@ class Profesor extends CI_Controller{
             'ci' => $this->input->post('ci'),
 
         );
-        $data['profesor']=$profesor;
-        $result = $this->profesor_model->updateProfesor($profesor);
-
-        $query = $this->profesor_model->getProfesores();
+        $query = $this->profesor_model->getProfesores(); 
+        $flag = 0;
+        foreach($query as $loop){
+            if($profesor['cedula'] == $loop->ci_profe and $profesor['cedula']!=$profesor['ci']){
+                $flag = 1;
+            }
+        }
+         if($flag ==0 ){
+             $result = $this->profesor_model->updateProfesor($profesor);
+        }
+        else{
+            $data['err'] = "Error, cedula ya registrada.";
+        } 
+       
+        $query = $this->profesor_model->getProfesores(); 
         $data['profesor'] = $query;
          
         $this->load->view('layouts/header');

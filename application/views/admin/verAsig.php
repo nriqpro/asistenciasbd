@@ -57,9 +57,16 @@
                         }
                     }
                   }
-                else{
-                    echo "Error";
-                }
+                ?>  
+                <?php
+                  if (isset($err)){?>
+                  <br><br><br><br>
+                    <div class="alert alert-danger col-lg-5 col-md-5" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>
+                      <span class="sr-only">Error:</span>
+                      <?php echo $err; ?>
+                    </div>
+                <?php  }
                 ?>  
               </tbody>
             </table>

@@ -18,7 +18,7 @@
         </form>
                 <div class="col-xs-6 col-md-2"></div>
 				<div class="col-xs-6 col-md-3">
-                    <a href="<?= base_url("index.php/admin/carrera");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
+                    <a href="<?= base_url("index.php/carrera");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
                 <div class="col-xs-6 col-md-2"></div>
 			</div>
 		
