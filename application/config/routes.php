@@ -42,6 +42,8 @@ $route['default_controller'] = "home";
 $route['alumnos'] = "alumnos";
 $route['admin'] = "admin";
 $route['profesor'] = "profesor";
+$route['periodo'] = "periodo";
+$route['carrera'] = "carrera";
 $route['asignaturas'] = "asignatura";
 $route['404_override'] = '';
 

@@ -46,17 +46,17 @@ class Alumno extends CI_Controller{
     
     public function gestionAlumno(){
         $cedula = $this->input->post('cedula');
-        
-        
+
+
         $data['alumno'] = $this->Alumno_model->getAlumno($cedula);
         $data['secciones'] = $this->Alumno_model->getInfoSecciones($cedula);
-        
+
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/alumno/gestionAlumno_view',$data);
         $this->load->view('layouts/footer');
     }
-    
+
     public function buscarAlumnos(){
         $tipo = $this->input->post('tipo');
         $contenido = $this->input->post('contenido');

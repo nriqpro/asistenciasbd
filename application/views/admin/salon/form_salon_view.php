@@ -62,8 +62,8 @@
 			</div>
 
 
-			
-			
+
+
 
 <br>
 			<div class="row">
@@ -78,4 +78,3 @@
 		</form>
           </div>
         </div>
- 

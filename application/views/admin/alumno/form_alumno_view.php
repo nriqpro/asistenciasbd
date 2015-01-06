@@ -3,7 +3,7 @@
 
 
           <h2 class="sub-header">Registro de Alumno</h2>
-      
+
           <form role="form" action='<?= base_url();?>index.php/alumno/registrarAlumno' method="post">
 
 			<div class="row">
@@ -74,7 +74,7 @@
 				</div>
 
 			</div>
-			
+
 
 <br>
 			<div class="row">

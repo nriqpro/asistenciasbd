@@ -3,7 +3,7 @@
     <a id="agregarAlumnos" href="<?= base_url("index.php/salon/formularioSalon");?>">
                     <button type="button" class="btn btn-success">Registrar Salon</button>
                 </a>
-                <?php 
+                <?php
                         if (isset($salones)){
                             echo"<div class=\"table-responsive\">
                                 <table class=\"table table-striped\">
@@ -20,7 +20,7 @@
                             echo"
                             <tr>
                               <td>".$loop->cod_salon."</td>";
-                            echo  "<td>".$loop->capacidad."</td> ";   
+                            echo  "<td>".$loop->capacidad."</td> ";
                             echo  "<td>";
                             echo   "<form action=".base_url("index.php/salon/gestionSalon")." method=\"post\" id=\"salon\">";
                             echo   "    <input type=\"hidden\" name = \"cod_salon\" value=\" ".$loop->cod_salon. " \">";
@@ -34,7 +34,7 @@
 
                             echo "</tbody>";
                             echo " </table>";
-                        } 
+                        }
                         else
                             echo "Bienvenido realice una busqueda para que aqui aparezca el resultado de la misma gracias att: Enrique Y Asociada (MARY)";
                 ?>

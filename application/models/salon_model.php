@@ -2,9 +2,9 @@
    class Salon_model extends CI_Model{
         function __construct(){
             parent::__construct();
-            
+
         }
-       
+
        public function getSalones(){
             $query = $this->db->query("SELECT * FROM salon");
             return $query->result();
