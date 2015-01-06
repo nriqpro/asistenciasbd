@@ -163,21 +163,30 @@
 		</div>
 	</div>
     <div class="row clearfix">
-				<div class="col-md-4 column">
+        <div class="col-md-3 column">
+                    <form action="<?= base_url("index.php/alumno/inscribirMaterias"); ?>" method="post" id="horario">
+                               <input type="hidden" name = "cedula" value="<?= $cedula_estudiante; ?>">
+                               <input type="hidden" name = "nombre" value="<?= $nombre_estudiante; ?>">
+                                  <button class="btn btn-primary" type="submit">Inscribir Materias</input>
+                    </form>
+				</div>
+				<div class="col-md-3 column">
                     <form action="<?= base_url("index.php/alumno/verHorarioAlumno"); ?>" method="post" id="horario">
                                <input type="hidden" name = "cedula" value="<?= $cedula_estudiante; ?>">
                                <input type="hidden" name = "nombre" value="<?= $nombre_estudiante; ?>">
                                   <button class="btn btn-primary" type="submit">Ver Horario</input>
                     </form>
 				</div>
-				<div class="col-md-4 column">
+				<div class="col-md-3 column">
 					  <form action="<?= base_url("index.php/alumno/editarAlumno"); ?>" method="post" id="editar">
                                <input type="hidden" name = "cedula" value="<?= $cedula_estudiante; ?>">
                                   <button class="btn btn-success" type="submit">Editar</button></input>
                     </form>
 				</div>
-				<div class="col-md-4 column">
-					 <button type="button" class="btn btn-danger">Cancelar</button>
+				<div class="col-md-3 column">
+                   <a href="<?= base_url("index.php/alumno/verAlumnos");?>">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                    </a>
 				</div>
 			</div>
 	

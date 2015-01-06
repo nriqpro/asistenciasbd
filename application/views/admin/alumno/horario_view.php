@@ -167,6 +167,7 @@
             <?php
                 if (is_array($alumno) && isset($alumno)){
                     //foreach ($alumno as $a){
+            
                            echo " <h4>".$alumno['nombre']."</h4>";
                            echo " <h4>V-".$alumno['cedula']."</h4>";
                  //   }
@@ -248,19 +249,11 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-           <!-- <form action="<?= base_url("index.php/alumno/editarAlumno"); ?>" method="post" id="editar">
-                               <input type="hidden" name = "cedula" value="<?= $cedula_estudiante; ?>">
-                                  <button class="btn btn-success" type="submit">Editar</button></input>
-                    </form>-->
-			 <button type="button" class="btn btn-lg">Regresar</button>
+            <form action="<?= base_url("index.php/alumno/gestionAlumno"); ?>" method="post" id="editar">
+                               <input type="hidden" name = "cedula" value="<?= $alumno['cedula']; ?>">
+                                  <button class="btn btn-lg" type="submit">Regresar</button></input>
+                    </form>
+			 
 		</div>
 	</div>
-          <?php
-        if (is_array($horario) && count($horario)){
-            foreach($horario as $loop){
-                echo $loop->cod_salon." ".$loop->dia." ".$loop->hora_ini." ".$loop->hora_fin." ".$loop->nombre."<br>";
-            }
-        
-        }
-    ?>
 </div>

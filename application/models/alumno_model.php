@@ -92,5 +92,37 @@
            );
             return $query->result();
        }
+       
+       public function getSeccionesCarrera($cedula){
+            $query = $this->db->query("
+               SELECT DISTINCT hc.cod_seccion ,hc.asignatura,hc.uni_cred,hc.nombre,hc.apellido
+               FROM horarios_carreras AS hc, r_alumno_car AS rac, carrera AS car
+               WHERE hc.carrera = car.nombre
+                    AND car.cod_c = rac.cod_c
+                    AND rac.ci_est = $cedula
+                    ORDER BY hc.cod_seccion ASC;"
+              
+             );
+            return $query->result();    
+       }
+       
+       public function getHorarioSeccion($seccion){
+        $query = $this->db->query("
+              SELECT DISTINCT hc.cod_seccion,hc.dia,hc.hora_ini,hc.hora_fin,hc.cod_salon 
+              FROM horarios_carreras AS hc 
+              WHERE hc.cod_seccion = $seccion
+              ORDER BY hc.dia DESC;"
+              
+        );
+        return $query->result();  
+       }
+       
+       
+       public function addSecciones($cedula,$seccion){
+           $array = array(0,$cedula,$seccion);
+            $query = $this->db->query("INSERT INTO r_seccion_alumno VALUES (?,?,?)",$array);
+    
+           return $query;  
+       }
 
    }

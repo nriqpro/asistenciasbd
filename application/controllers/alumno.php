@@ -92,6 +92,50 @@ class Alumno extends CI_Controller{
         $this->load->view('admin/alumno/horario_view',$data);
         $this->load->view('layouts/footer');
     }
+    
+    public function inscribirMaterias(){
+         $alumno = array(
+            'cedula' => $this->input->post('cedula'),
+            'nombre' => $this->input->post('nombre'),
+        );
+        $data['alumno'] = $alumno;
+        $infoSecciones = $this->Alumno_model->getSeccionesCarrera($alumno['cedula']);
+        $data['infoSecciones'] = $infoSecciones;
+        $horarios = array();
+        $i = 0;
+        foreach ($infoSecciones as $loop){
+      //          echo "asignatura: ".$loop->asignatura."<br>";
+                $horarios[$i++]=$this->Alumno_model->getHorarioSeccion($loop->cod_seccion);
+        }
+//        $i = 0;
+//        
+//        foreach ($horarios as $loop){
+//            echo "SECCION (".$i++.")<br>";
+//                foreach ($loop as $h){
+//                    echo $h->cod_seccion." ".$h->dia." ".$h->hora_ini." ".$h->hora_fin." ".$h->cod_salon."<br>";
+//                }
+//        }
+        $data['horarios'] = $horarios;
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/inscribir_materias_view',$data);
+        $this->load->view('layouts/footer');
+    
+    }
+    
+    public function inscribirSeccionesBD(){
+
+        $variables = $this->input->post();
+        $i = 0;
+       foreach($variables as $loop){
+        if ($i == 0 )
+            $cedula = $loop;
+        if ($i>1)
+             $horarios[$i++]=$this->Alumno_model->addSecciones($cedula,$loop);
+           $i++;
+       }
+        
+        
+    }
 }
 
 ?>
