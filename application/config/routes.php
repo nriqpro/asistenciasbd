@@ -44,7 +44,6 @@ $route['admin'] = "admin";
 $route['profesor'] = "profesor";
 $route['periodo'] = "periodo";
 $route['carrera'] = "carrera";
-$route['seccion'] = "seccion";
 $route['asignaturas'] = "asignatura";
 $route['404_override'] = '';
 
