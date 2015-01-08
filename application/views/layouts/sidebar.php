@@ -9,7 +9,7 @@
             <li ><a href="<?= base_url("index.php/periodo");?>">Periodos</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Secciones</a></li>
+            <li ><a href="<?= base_url("index.php/seccion");?>">Secciones</a></li>
             <li><a href="<?= base_url("index.php/salon/verSalones");?>">Salones</a></li>
           </ul>
         </div>
