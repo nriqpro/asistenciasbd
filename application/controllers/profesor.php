@@ -5,6 +5,7 @@ class Profesor extends CI_Controller{
     public function __construct(){
         parent::__construct();
           $this->load->model('profesor_model');
+        $this->load->model('asig_model');
     }
     
     public function index(){
@@ -103,6 +104,16 @@ class Profesor extends CI_Controller{
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verProf', $data);
+        $this->load->view('layouts/footer');
+    }
+    
+    public function cargarCrearSeccion(){
+        
+        
+        $data['asignaturas'] = $this->asig_model->getAsignaturas();
+         $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/crearSeccion',$data);
         $this->load->view('layouts/footer');
     }
     
