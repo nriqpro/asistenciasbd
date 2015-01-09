@@ -5,7 +5,7 @@
             
         }
        
-       function getAlumnos(){
+       public function getAlumnos(){
             $query = $this->db->query("SELECT * FROM alumno");
             return $query->result();
        }

@@ -11,7 +11,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
                     <h4>Cédula:</h4>
 					<div class="form-group">
-                        <input type="number" name="cedula" id="cedula" class="form-control input-sm" placeholder="<?php echo $profesor["cedula"]; ?>" tabindex="1" required>
+                        <input name="cedula" id="cedula" class="form-control input-sm" value="<?php echo $profesor['cedula']; ?>" tabindex="1" disabled>
 					</div>
                     <h4>Apellido:</h4>
 					<div class="form-group">

@@ -66,7 +66,6 @@ class Profesor extends CI_Controller{
     
      public function editarProfesor(){
         $profesor = array(
-            'cedula' => $this->input->post('cedula'),
             'nombre' => $this->input->post('nombre'),
             'apellido' => $this->input->post('apellido'),
             'sexo' => $this->input->post('sexo'),
@@ -74,18 +73,10 @@ class Profesor extends CI_Controller{
             'ci' => $this->input->post('ci'),
 
         );
-        $query = $this->profesor_model->getProfesores(); 
-        $flag = 0;
-        foreach($query as $loop){
-            if($profesor['cedula'] == $loop->ci_profe and $profesor['cedula']!=$profesor['ci']){
-                $flag = 1;
-            }
-        }
-         if($flag ==0 ){
-             $result = $this->profesor_model->updateProfesor($profesor);
-        }
-        else{
-            $data['err'] = "Error, cedula ya registrada.";
+        $result = $this->profesor_model->updateProfesor($profesor);
+        
+        if($result == NULL){
+            $data['err'] = "Ocurrio un error editando los datos.";
         } 
        
         $query = $this->profesor_model->getProfesores(); 

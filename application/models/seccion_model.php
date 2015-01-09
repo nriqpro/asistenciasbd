@@ -9,10 +9,19 @@
        public function getSeccion($seccion){
            $query = $this->db->query("SELECT  sec.cod_seccion, sec.cod_peri, sec.ci_profe, p.nombre, p.apellido, 
                                         sec.cod_asig, asig.nombre as asig
-                                        FROM seccion as sec, asignatura as asig, profesor as p  
-                                        WHERE p.ci_profe = sec.ci_profe and asig.cod_asig = sec.cod_asig and
-                                        sec.cod_seccion=?",$seccion);
+                                        FROM seccion as sec, asignatura as asig, profesor as p
+                                        WHERE p.ci_profe = sec.ci_profe and asig.cod_asig = sec.cod_asig
+                                             and sec.cod_seccion=?",$seccion);
             return $query->result();
+       }
+       public function seccionSalon($seccion){
+             $query = $this->db->query("SELECT  rss.cod_salon, rss.hora_ini, rss.hora_fin, rss.dia
+                                        FROM seccion as sec, r_seccion_salon as rss 
+                                        WHERE
+                                             rss.cod_seccion = sec.cod_seccion 
+                                             and sec.cod_seccion=?",$seccion);
+            return $query->result();
+           
        }
        
        function getSecciones(){

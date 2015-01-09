@@ -25,7 +25,7 @@
            $db_debug = $this->db->db_debug; //save setting
 
            $this->db->db_debug = FALSE; 
-           $query = $this->db->query("UPDATE profesor SET ci_profe=?,nombre=?,apellido=?,sexo=?, direc=? WHERE ci_profe=?",$profesor);
+           $query = $this->db->query("UPDATE profesor SET nombre=?,apellido=?,sexo=?, direc=? WHERE ci_profe=?",$profesor);
 
 //           if($data['error'] = $this->db->_error_message("Error"));
 

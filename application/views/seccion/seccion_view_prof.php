@@ -15,7 +15,7 @@
 					<?= $loop->ci_profe; ?>
 				</dd>
 				<dt>
-					Nombre Completo
+					Nombre Completo:
 				</dt>
 				<dd>
 					<?= $loop->nombre." ".$loop->apellido; ?>

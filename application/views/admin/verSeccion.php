@@ -51,13 +51,31 @@
                   <td><?=$loop->apellido;?></td>     
                   <td><?=$loop->asig;?></td>     
                   <td>
-                      <form action="<?=  base_url("index.php/seccion/cargarEditarSec");?>" method="post" id="secciones">
+<!--                      <div class="btn-toolbar" role="toolbar">-->
+                          <div class="btn-group">
+                             <form action="<?=  base_url("index.php/seccion/cargarEditarSec");?>" method="post" id="secciones">
+                                <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
+                                <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
+                                <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
+                                <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
+                               <input class="btn btn-xs btn-primary" type="submit" value="Editar"></input>     
+                        </form> 
+                        <form action="<?=  base_url("index.php/seccion/verHorarioSec");?>" method="post" id="secciones">
                           <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
                           <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
                           <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
                           <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
-                          <button class="btn btn-xs btn-primary" type="submit">Editar</input>
+                          <input class="btn btn-xs btn-success" type="submit" value="Horario"></input>
                         </form>
+                        <form action="<?=  base_url("index.php/seccion/asistenciaSec");?>" method="post" id="secciones">
+                          <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
+                          <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
+                          <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
+                          <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
+                          <input class="btn btn-xs btn-warning" type="submit" value="Asistencia"></input>
+                        </form>
+                          </div>
+<!--                    </div>-->
                   </td>
 
                 </tr>

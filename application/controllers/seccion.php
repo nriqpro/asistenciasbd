@@ -5,6 +5,7 @@ class Seccion extends CI_Controller{
     public function __construct(){
         parent::__construct();
           $this->load->model('seccion_model');
+          $this->load->model('alumno_model');
     }
     
     public function index(){
@@ -73,6 +74,21 @@ class Seccion extends CI_Controller{
         $this->load->view('layouts/footer');
     }
     
+    public function verHorarioSec(){
+        $seccion = array(
+            'cod_peri' => $this->input->post('cod_peri'),
+            'ci_profe' => $this->input->post('ci_profe'),
+            'cod_asig'  => $this->input->post('cod_asig'),
+            'cod_seccion'  => $this->input->post('cod_seccion'),
+        );
+        $data['alumno'] = $this->alumno_model->getAlumnosBySeccion($seccion['cod_seccion']);
+        $data['seccion'] = $this->seccion_model->getSeccion($seccion['cod_seccion']);
+        $data['salon'] = $this->seccion_model->seccionSalon($seccion['cod_seccion']);
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('seccion/ver_horario_sec',$data);
+        $this->load->view('layouts/footer');
+    }
     
     public function seccionInfo(){
         $tipo = $this->input->post('tipo');
