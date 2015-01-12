@@ -76,4 +76,24 @@
            
             return $query;
        }
+       
+       public function add_r_seccion_salon($r_seccion_salon){
+             $query = $this->db->query("INSERT INTO r_seccion_salon VALUES (?,?,?,?,?)",$r_seccion_salon);
+       }
+       public function addSeccionProfesor($seccion, $r_seccion_salon){
+             $this->db->trans_start();
+             $this->addSeccion($seccion);
+           
+            for ($i = 0;$i < count($r_seccion_salon) ;$i++)
+                $this->add_r_seccion_salon($r_seccion_salon[$i]);
+                
+             $this->db->trans_complete();
+       }
+       
+       public function getSiguienteSeccion(){
+            $query = $this->db->query("SELECT MAX(cod_seccion) as r FROM seccion;");
+            
+            foreach ($query->result() as $loop)
+                return $loop->r+1;
+       }
    }

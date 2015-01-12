@@ -6,6 +6,7 @@ class Profesor extends CI_Controller{
         parent::__construct();
           $this->load->model('profesor_model');
           $this->load->model('asig_model');
+          $this->load->model('salon_model');
     }
     
     public function index(){
@@ -100,7 +101,9 @@ class Profesor extends CI_Controller{
     
     public function cargarCrearSeccion(){
         
+        $data['profesor'] = $this->profesor_model->getProfesor($this->input->post('cedula'));
         $data['asignaturas'] = $this->asig_model->getAsignaturas();
+        $data['salones'] = $this->salon_model->getSalones();
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/crearSeccion',$data);

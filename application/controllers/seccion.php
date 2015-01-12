@@ -5,6 +5,7 @@ class Seccion extends CI_Controller{
     public function __construct(){
         parent::__construct();
           $this->load->model('seccion_model');
+          $this->load->model('periodo_model');
           $this->load->model('alumno_model');
     }
     
@@ -161,4 +162,82 @@ class Seccion extends CI_Controller{
                     }
         
     }
-}
+    
+    public function inscribirSecciones(){
+        $periodo = $this->periodo_model->getPeriodoActual();
+        $variables = $this->input->post();
+        
+        $i = 0;
+        $j = 0;
+        $k = 0;
+        $variableEspecial = 0;
+        $codigoPeriodo;
+        $codigoAsignatura;
+        $cedulaProfesor;
+        $codigoSalon;
+        $codigoSeccion = $this->seccion_model->getSiguienteSeccion();
+        $horaInicio = array();
+        $horaFin = array();
+        $dia = array();
+        
+        foreach($periodo as $loop){
+         $codigoPeriodo = $loop->cod_peri;
+        }
+       foreach($variables as $loop){
+           if ($i == 0)
+               $cedulaProfesor = $loop;
+           if ($i == 1)
+               $codigoAsignatura = $loop;
+           if ($i == 2)
+               $codigoSalon = $loop;
+        
+           if ($i > 2){
+                    
+                   if ($k == 0)
+                       $horaInicio[$j] = $loop;
+
+                   if($k == 1)
+                       $horaFin[$j] = $loop;
+
+                   if ($k == 2){
+                       $dia[$j] = $loop;
+                       $j++;
+                   }
+                       
+                
+                   $k = ($k + 1) % 3;
+                   
+            }
+            $i++;
+           }
+            $seccion = array(
+                'cod_seccion' => $codigoSeccion,
+                'cod_peri' => $codigoPeriodo,
+                'ci_profe' => $cedulaProfesor,
+                'cod_asig'  => $codigoAsignatura
+            );
+            $r_seccion_salon = array();
+            echo "codigoSeccion: ".$codigoSeccion."<br>";
+            echo "codigoPeriodo: ".$codigoPeriodo."<br>";
+            echo "codigoAsignatura: ".$codigoAsignatura."<br>";
+            echo "codigoSalon: ".$codigoSalon."<br>";
+            echo "cedulaProfesor: ".$cedulaProfesor."<br>";
+        
+            for ($i = 0 ; $i < $j ; $i++){
+                $r_seccion_salon[$i] = array(
+                        'hora_ini' => $horaInicio[$i],
+                        'dia' => $dia[$i],
+                        'cod_salon'  => $codigoSalon,
+                        'cod_seccion' => $codigoSeccion,
+                        'hora_fin' => $horaFin[$i]
+                );
+                 echo "horaInicio ".$horaInicio[$i]."<br>";
+                 echo "horaFin: ".$horaFin[$i]."<br>";
+                 echo "Dia: ".$dia[$i]."<br>";
+            }
+        
+            $this->seccion_model->addSeccionProfesor($seccion, $r_seccion_salon);
+       }
+        
+    }
+
