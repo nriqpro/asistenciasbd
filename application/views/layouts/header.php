@@ -15,7 +15,7 @@
     <!-- Custom styles for this template -->
 
       <link rel="stylesheet" href="<?php base_url();?>assets/css/bootstrap-theme.min.css">
-
+    <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
   </head>
 
   <body>

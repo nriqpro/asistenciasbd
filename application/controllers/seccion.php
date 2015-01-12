@@ -6,6 +6,10 @@ class Seccion extends CI_Controller{
         parent::__construct();
           $this->load->model('seccion_model');
           $this->load->model('alumno_model');
+          $this->load->model('profesor_model');
+          $this->load->model('asig_model');
+          $this->load->model('periodo_model');
+          $this->load->model('salon_model');
     }
     
     public function index(){
@@ -18,27 +22,38 @@ class Seccion extends CI_Controller{
     }
 
     public function formularioSeccion(){
+        $query = $this->profesor_model->getProfesores();
+        $data['profesor'] = $query;
+        $query = $this->asig_model->getAsignaturas();
+        $data['asignaturas'] = $query;
+        $query = $this->periodo_model->getPeriodos();
+        $data['periodo'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('asignatura/form_asig_view');
+        $this->load->view('seccion/form_seccion_view',$data);
         $this->load->view('layouts/footer');
     }
     
     public function addSeccion(){
-        $asignaturas = array(
-
-            'descripcion' => $this->input->post('nombre'),
-            'uni_cred' => $this->input->post('creditos'),
-            'nro_horas' => $this->input->post('horas')
+        $seccion = array(
+            'cod_peri' => $this->input->post('cod_peri'),
+            'ci_profe' => $this->input->post('ci_profe'),
+            'cod_asig'  => $this->input->post('cod_asig'),
         );
-        $data['asignaturas'] = $this->asig_model->addAsignatura($asignaturas);
+        $query = $this->seccion_model->addSeccion($seccion);
+        $data['seccion'] = $query;
+        
+         if($query ==NULL){
+            $data['err'] = "Error, asegurese de que los datos esten registrados actualmente.";   
+        }
+        
+        $data['seccion'] = $this->seccion_model->getSecciones();
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verAsig',$data);
+        $this->load->view('admin/verSeccion',$data);
         $this->load->view('layouts/footer');
     }
-    
-    
+
     public function cargarEditarSec(){
         $seccion = array(
             'cod_peri' => $this->input->post('cod_peri'),
@@ -87,6 +102,30 @@ class Seccion extends CI_Controller{
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('seccion/ver_horario_sec',$data);
+        $this->load->view('layouts/footer');
+    }
+    
+        
+    public function cargarAddSalonSecc(){
+         $seccion = array(
+            'cod_peri' => $this->input->post('cod_peri'),
+            'ci_profe' => $this->input->post('ci_profe'),
+            'cod_asig'  => $this->input->post('cod_asig'),
+            'cod_seccion'  => $this->input->post('cod_seccion'),
+        );    
+        $data['seccion'] = $this->seccion_model->getSeccion($seccion['cod_seccion']);
+        $data['salon'] = $this->seccion_model->seccionSalon($seccion['cod_seccion']);
+        
+        $query = $this->salon_model->getSalones();
+        
+        if($query == NULL){
+            $data['err'] = "No existen salones. Cree un salon";
+        }else{
+            $data['salones'] = $query;
+        }
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('seccion/form_salonsecc_view',$data);
         $this->load->view('layouts/footer');
     }
     

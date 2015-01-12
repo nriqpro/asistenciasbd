@@ -17,13 +17,17 @@
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3">
                <button type="submit" class="btn btn-default">Buscar</button>
-
             </div>
-            <div class="col-xs-12 col-sm-1 col-md-1">  </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                      <a id="agregarAsig" href="<?= base_url("index.php/seccion/formularioSeccion");?>">
+                <button type="button" class="btn btn-success">Registrar seccion</button>
+                </a>  
+             </div>
+             
         </form>
         </div> 
     </br>
-    </br></br>
+    </br></br></br></br>
     
      <div class="table-responsive">
             <table class="table table-striped">
