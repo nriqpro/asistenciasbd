@@ -34,5 +34,16 @@
        
             return $query;
        }
+       
+       public function getPeriodoActual(){
+            $query = $this->db->query(
+                " SELECT peri.cod_peri 
+                  FROM periodo AS peri
+                  ORDER BY peri.inicio DESC LIMIT 1;"
+           );
+            return $query->result();
+      
+    
+       }
 
    }

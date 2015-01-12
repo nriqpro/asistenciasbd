@@ -53,6 +53,13 @@
                            <button class="btn btn-xs btn-primary" type="submit">Editar</input>
                         </form>
                   </td>
+                  <td>
+                      <form action="<?=  base_url("index.php/profesor/cargarCrearSeccion");?>" method="post" id="profesores">
+                            <input type="hidden" name = "cedula" value="<?= $loop->ci_profe; ?>">
+                           <button class="btn btn-xs btn-primary" type="submit">Crear Seccion
+                            </input>
+                        </form>
+                </td>
 
                 </tr>
                 <?php

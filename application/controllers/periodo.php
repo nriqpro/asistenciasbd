@@ -90,5 +90,7 @@ class Periodo extends CI_Controller{
         $this->load->view('admin/verPeriodo',$data);
         $this->load->view('layouts/footer');
     }
+    
+  
         
 }
