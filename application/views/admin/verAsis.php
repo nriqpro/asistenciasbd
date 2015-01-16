@@ -89,12 +89,6 @@
                         </form>      
                       </td>
                     <td>
-                       
-                       <form action="<?=  base_url("index.php/asistencia/cargarEditarAsis");?>" method="post" id="asis">
-                            <input type="hidden" name = "cod_asis" value="<?= $loop->cod_asis; ?>">
-                            <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
-                           <button class="btn btn-xs btn-warning" type="submit">Editar</input>
-                        </form>
                   </td>
         
                 </tr>

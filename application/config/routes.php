@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "login";
 $route['alumnos'] = "alumnos";
 $route['admin'] = "admin";
 $route['profesor'] = "profesor";

@@ -91,87 +91,49 @@ class Asistencia extends CI_Controller{
 //                                        
                     }
                  }
-//            $query = $this->asis_model->asisAlumnos($cod_asis[count($asis)+1]);
-//            $query2 = $this->asis_model->inasistentes($asis);
+                $nueva = $this->asis_model->getAsis($cod_asis);
+                foreach($nueva as $loop){
+                    $codigos = array( 'cod_seccion'  => $loop->cod_seccion,
+                                        'cod_asis'  => $loop->cod_asis,
+                                        'cod_sec'  => $loop->cod_seccion,
+                                        'fecha'  => $loop->fecha);
+
+                }
+            $query = $this->asis_model->asisAlumnos($codigos);
+            $query2 = $this->asis_model->inasistentes($codigos);
 //            $seccion =  $this->seccion_model->getSeccion($sec);
             
 //            echo $seccion['cod_peri'];
             
-//        if($query == null){
-//            $data['err'] = "No se ha cargado asistencia."; 
-//            $this->load->view('layouts/header');
-//            $this->load->view('layouts/sidebar');
-//            $this->load->view('asistencia/alumnos_asis_view',$data);
-//            $this->load->view('layouts/footer');   
-//        }
-//        else if($query2 == NULL){
-//                $data['asis'] = $query;
-//                $data['err2'] = "No hay inasistentes.";
-//                $this->load->view('layouts/header');
-//                $this->load->view('layouts/sidebar');
-//                $this->load->view('asistencia/alumnos_asis_view',$data);
-//                $this->load->view('layouts/footer');   
-//            }
-//            else{
-//                $data['asis'] = $query;
-//                $data['inas'] = $query2;
-//                $this->load->view('layouts/header');
-//                $this->load->view('layouts/sidebar');
-//                $this->load->view('asistencia/alumnos_asis_view',$data);
-//                $this->load->view('layouts/footer');   
+        if($query == null){
+            $data['err'] = "No se ha cargado asistencia.";
+            $this->load->view('layouts/header');
+            $this->load->view('layouts/sidebar');
+            $this->load->view('asistencia/alumnos_asis_view',$data);
+            $this->load->view('layouts/footer');
+        }
+        else if($query2 == NULL){
+                $data['asis'] = $query;
+                $data['err2'] = "No hay inasistentes.";
+                $this->load->view('layouts/header');
+                $this->load->view('layouts/sidebar');
+                $this->load->view('asistencia/alumnos_asis_view',$data);
+                $this->load->view('layouts/footer');
+            }
+            else{
+                $data['asis'] = $query;
+                $data['inas'] = $query2;
+                $this->load->view('layouts/header');
+                $this->load->view('layouts/sidebar');
+                $this->load->view('asistencia/alumnos_asis_view',$data);
+                $this->load->view('layouts/footer');
+            }
 //                
         }else{
             $data['err'] = "Error cargando asistencia";
         }
-        $this->load->view('layouts/header');
-        $this->load->view('layouts/sidebar');
-//        $this->load->view('admin/verAsig',$data);
-        $this->load->view('layouts/footer');
     }
-    
-    
-    public function cargarEditarAsig(){
-        $asignatura = array(
-            'id'  => $this->input->post('id'),
-            'descripcion' => $this->input->post('descripcion'),
-            'unid' => $this->input->post('uni_cred'),
-            'horas' => $this->input->post('nro_horas'),
-        );
 
-        $data['asignaturas']=$asignatura;
-        $this->load->view('layouts/header');
-        $this->load->view('layouts/sidebar');
-        $this->load->view('asignatura/form_edit_asig',$data);
-        $this->load->view('layouts/footer');
-    }
-    
-     public function editarAsig(){
-        $asignatura = array(
-            'descripcion' => $this->input->post('nombre'),
-            'unid' => $this->input->post('creditos'),
-            'horas' => $this->input->post('horas'),
-            'id' => $this->input->post('id'),
-        );
-        $data['asignaturas']=$asignatura;
-        $result = $this->asig_model->updateAsignatura($asignatura);
 
-        $query = $this->asig_model->getAsignaturas();
-        $data['asignaturas'] = $query;
-         
-        $this->load->view('layouts/header');
-        $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verAsig',$data);
-        $this->load->view('layouts/footer');
-    }
-    
-    
-    public function cargarAsigBuscada(){
-        $asignatura= $this->input->post('nombre');
-        $data['asignaturas'] = $this->asig_model->getAsig($asignatura);
-        $this->load->view('layouts/header');
-        $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verAsig',$data);
-        $this->load->view('layouts/footer');
-    }
         
 }

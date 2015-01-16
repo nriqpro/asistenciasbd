@@ -27,7 +27,10 @@
        }
        
        public function addAsisAlumno($asis, $cod){
+            $this->db->trans_start();
            $query = $this->db->query("INSERT INTO r_asis_alumnos VALUES ('$asis','$cod')");
+            $this->db->query("UPDATE asistencias SET cargada=1 WHERE cod_asis='$cod'");
+            $this->db->trans_complete();
            return $query;
        }
        
