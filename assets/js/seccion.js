@@ -35,56 +35,46 @@ function removeSalon(){
     }
 }
 function addSalon(){
-//    var salon = document.getElementsByName("sa");
-//    var sa;
-//    for (var i=0, len=salon.length; i<len; i++) {
-//            if ( salon[i].checked ) { // radio checked?
-//                 sa = salon[i].value;
-////                alert(salon[i].value);
-//                break; // and break out of for loop
-//            }
-//        }
-    
      var table = document.getElementById("horario");
      var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr'); 
      var tsalones = document.getElementById("tsalones").value;
      var salones = document.getElementsByName("idsalon");
-     
+
      for (i = 0; i < rows.length; i++) {
            var selectSalon = "";
            selectSalon="<select id='salonesOp' class='form-control' >";
            for(var j=0; j<tsalones; j++){
-                 selectSalon= "<option value='"+salones[j]+"'>"+salones[j]+"</option>"; break;
-//                 
+                 selectSalon+= "<option value='"+salones[j].value+"'>"+salones[j].value+"</option>";
             }  
            selectSalon += "</select>";
            rows[i].cells[0].innerHTML = selectSalon;
-           alert("asfdgh");
-//           var selectHTML = "";
-//            selectHTML="<select id='dias' class='form-control' >";
-//            for(var i=0; i<7; i++){
-//                switch(i){
-//                    case 0: selectHTML+= "<option value='Lunes'>Lunes</option>"; break;
-//                    case 1: selectHTML+= "<option value='Martes'>Martes</option>"; break;  
-//                    case 2: selectHTML+= "<option value='Miercoles'>Miercoles</option>"; break;  
-//                    case 3: selectHTML+= "<option value='Jueves'>Jueves</option>"; break;
-//                    case 4: selectHTML+= "<option value='Viernes'>Viernes</option>"; break;
-//                    case 5: selectHTML+= "<option value='Sabado'>Sabado</option>"; break;
-//                    case 6: selectHTML+= "<option value='Domingo'>Domingo</option>"; break; 
-//                }
-//            }              
-//            selectHTML += "</select>";
-//            rows[i].cells[1].innerHTML = selectHTML;
-//    
-//            var hin = document.createElement("input");
-//            hin.type = "time";
-//            hin.id = "hin";
-//            rows[i].cells[2].appendChild(hin);
+
+           var selectHTML = "";
+            selectHTML="<select id='dias' class='form-control' >";
+            for(var k=0; k<7; k++){
+                switch(k){
+                    case 0: selectHTML+= "<option value='Lunes'>Lunes</option>"; break;
+                    case 1: selectHTML+= "<option value='Martes'>Martes</option>"; break;
+                    case 2: selectHTML+= "<option value='Miercoles'>Miercoles</option>"; break;
+                    case 3: selectHTML+= "<option value='Jueves'>Jueves</option>"; break;
+                    case 4: selectHTML+= "<option value='Viernes'>Viernes</option>"; break;
+                    case 5: selectHTML+= "<option value='Sabado'>Sabado</option>"; break;
+                    case 6: selectHTML+= "<option value='Domingo'>Domingo</option>"; break;
+                }
+            }
+            selectHTML += "</select>";
+            rows[i].cells[1].innerHTML = selectHTML;
+
+            var selectTimeIn = "";
+            selectTimeIn = "<input type='time' id='hin' name='hin'></input>";
+
+            rows[i].cells[2].innerHTML = selectTimeIn;
+
+            var selectTimeF = "";
+            selectTimeF = "<input type='time' id='hfin' name='hfin'></input>";
+
+            rows[i].cells[3].innerHTML = selectTimeF;
 //
-//            var hfin = document.createElement("input");
-//            hfin.type = "time";
-//            hfin.id = "hfin";
-//            rows[i].cells[3].appendChild(hfin);
 //
 //            rows[i].onclick = function() {
 ////                    alert(this.cells[2].innerHTML);

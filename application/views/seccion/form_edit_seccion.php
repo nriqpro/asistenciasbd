@@ -36,10 +36,10 @@
             </div>
         <?php }
             foreach($salones as $loop){?>
-                <input type="hidden" id="idsalon" value="<?= $loop->cod_salon; ?>" >
+                <input type="hidden" name="idsalon" id="idsalon" value="<?= $loop->cod_salon; ?>" >
         <?php } ?>
 
-	 <div class="col-md-6 table-responsive">
+	 <div class="col-md-8 table-responsive">
             <table class="table table-striped" id="horario">
               <thead>
                  

@@ -47,6 +47,7 @@ $route['carrera'] = "carrera";
 $route['seccion'] = "seccion";
 $route['asistencia'] = "asistencia";
 $route['asignaturas'] = "asignatura";
+$route['login'] = "login";
 $route['404_override'] = '';
 
 
