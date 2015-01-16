@@ -75,31 +75,21 @@ class Asistencia extends CI_Controller{
         $asis = array(
              'ci_est'  => $this->input->post('ci_est'),
         );
+
         $cod_asis = $this->input->post('cod_asis');
         $sec = array('cod_seccion' => $this->input->post('cod_seccion'));
-        
+        $total = $this->input->post('contador');
+
         $i=0;
-        $flag = 0;
+        $ci = 0;
             if(is_array($asis) && count($asis)) {
-                    foreach($asis as $loop){
-                         for($i=0; $flag!=1; $i++){
-//                       $data['asis'] = $this->asis_model->addAsisAlumno($loop, $cod_asis);
-//                    if (count($asis)==1)
-//                         $data['asis'] = $this->asis_model->addAsisAlumno($loop[$i], $cod_asis[count($asis)+1]);
-//                    else{for($i=0; $i<count($asis)+2; $i++){
-//    //                    echo ($loop[$i]);
-                        if($loop[$i] != ""){
-                             echo $loop[$i];
-//                            $data['asis'] = $this->asis_model->addAsisAlumno($loop[$i], $cod_asis[count($asis)+1]);
-                        }
-                        else{
-                            $flag = 1;
-                        }
-//    //                    echo "<br>";
-//                        }
-//                    }
-//                }
-                                                 }
+                 for($i=0; $i<$total; $i++){
+                     foreach($asis as $loop){                  
+                        $ci = $loop[$i];
+                        echo $ci;
+                         $data['asis'] = $this->asis_model->addAsisAlumno($ci, $cod_asis[0]);
+                    echo "<br>";
+//                                        
                     }
                 
 //            $query = $this->asis_model->asisAlumnos($cod_asis[count($asis)+1]);
@@ -131,9 +121,7 @@ class Asistencia extends CI_Controller{
 //                $this->load->view('asistencia/alumnos_asis_view',$data);
 //                $this->load->view('layouts/footer');   
 //                
-//            }
-        }     
-        else{
+        }else{
             $data['err'] = "Error cargando asistencia";
         }
         $this->load->view('layouts/header');

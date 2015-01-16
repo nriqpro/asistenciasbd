@@ -16,7 +16,9 @@
                 <?php
                   if (isset($asis)){
                     if(is_array($asis) && count($asis) ) {
+//                        $i=0;
                         foreach($asis as $loop){
+                            
                 ?>
                 <tr>
                   <td><?=$loop->ci_est;?></td>    
@@ -31,12 +33,13 @@
                                 foreach($asistencia as $loop){
                         ?>
                       <input type="hidden" name="cod_seccion" value="<?=$loop->cod_seccion;?>" >
-                      <input type="hidden" name="cod_asis[]" value="<?=$loop->cod_asis;?>" >
-                      <input type="hidden" name="fecha" value="<?=$loop->fecha;?>" >
+                      <input type="hidden" name="cod_asis" value="<?=$loop->cod_asis;?>" >
                       </div>
                   </td>    
                 </tr>
-                <?php   }}}
+                <?php   }}} 
+//                            echo $i;
+//                        $i++;
                         }
                     }
                   }
@@ -59,12 +62,13 @@
 			<div class="row">
                 <div class="col-xs-6 col-md-2"></div>
 				<div class="col-xs-6 col-md-3">
-                  <input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
+                <input type="hidden" id="contador" name="contador" value="">
+                 <input type="submit" onclick="load()" value="Guardar" class="btn btn-primary btn-block btn-lg" tabindex="12"> </div>
     </form>    
                 <div class="col-xs-6 col-md-2"></div>
 				<div class="col-xs-6 col-md-3">
                     <a href="<?= base_url("index.php/seccion");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
                 <div class="col-xs-6 col-md-2"></div>
 			</div>
-<script src="<?php echo base_url("assets/js/asistencia.js"); ?>"></script>
+        <script src="<?php echo base_url("assets/js/asistencia.js"); ?>"></script>
     </div>
