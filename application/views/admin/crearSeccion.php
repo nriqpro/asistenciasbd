@@ -25,7 +25,7 @@
         function crearHiddenInput(nombre,valor){
                 var theForm = document.getElementById("formInscribirSeccion");
                 var input = document.createElement('input');
-                input.type = 'text';
+                input.type = 'hidden';
                 input.name =nombre+nHiddenInputs;
                 input.id = nombre+nHiddenInputs;
                 input.value = valor;
@@ -326,7 +326,7 @@
             </form>
 		</div>
 		<div class="col-md-4 column">
-			 <button type="button" class="btn btn-default">Default</button>
+			 <button type="button" onclick="location.reload()"class="btn btn-warning">Reiniciar</button>
 		</div>
 	</div>
 </div>

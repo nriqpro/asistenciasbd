@@ -83,7 +83,13 @@
          
         }
          
-         function isDesocupada(i,j,columna){
+         function reiniciar(){
+            location.reload();
+         }
+         
+         function isDesocupada(i,j,columna,tipo){
+             if (tipo==0)
+                 return 1;
             for (var k = i ; k <= j ; k++){                        
                 var celda = document.getElementById((k*10 + columna).toString());
                 if (celda.style.backgroundColor!="white")
@@ -92,10 +98,10 @@
              return 1;
          
          }
+         
          function colorear_tabla( horas, tipo){
 
-                   var celda = document.getElementById("0");
-                            celda.style.backgroundColor = (celda.style.backgroundColor=="blue" ? "yellow":"blue");
+       
              var materias = eval(<?php echo json_encode($infoSecciones);?>);
             
             var horas_inicio = ["07:00:00","08:00:00","09:00:00","10:00:00","11:00:00","12:00:00","13:00:00","14:00:00","15:00:00",
@@ -109,7 +115,7 @@
              for (item in materias) {
                 arregloCodSeccion[i++] = materias[item].cod_seccion;
              }
-            var arrayColores =["aqua","limegreen","teal","DeepSkyBlue","silver","orange","red","yellow","Magenta"]; 
+            var arrayColores =["aqua","limegreen","teal","DeepSkyBlue","silver","orange","red","yellow","Magenta","salmon","greenyellow","slateblue","lightskyblue","aquamarine"]; 
             for (item in horas) {
                 var columna ;
                 
@@ -125,13 +131,13 @@
                             for (var j=0 ; j < horas_fin.length ; j++){
                                 if (horas[item].hora_fin== horas_fin[j]){
                                     var aux = 0;
-                                   if ((isDesocupada(i,j,columna))==1)
+                                   if ((isDesocupada(i,j,columna,tipo))==1){
                                             for (var k = i ; k <= j ; k++){
 
                                                 var celda = document.getElementById((k*10 + columna).toString());
                                                 for (var z = 0 ; z < arregloCodSeccion.length ; z++){
                                                     if (arregloCodSeccion[z] == horas[item].cod_seccion){
-                                                        if (tipo == 1  )
+                                                        if (tipo == 1)
                                                             celda.style.backgroundColor  = arrayColores[z];
                                                         else
                                                             celda.style.backgroundColor ="white";
@@ -159,8 +165,10 @@
                                                         celda.innerHTML="";
 
                                             }
+                                   }
                                     
-                                    else return 0;
+                                     else { alert("ESTA MATERIA CHOCA CON UNA YA INSCRITA!!!!"); return 0;}
+                                    
                                 }
                             }
                         }
@@ -172,14 +180,30 @@
          
          function crearHiddenInput(cod_seccion){
                 var theForm = document.getElementById("formInscribir");
-                var cont = document.getElementById("inputContador");
+               // var cont = document.getElementById("inputContador");
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name ="sec"+( parseInt(cont.value, 10));
-                input.id = "sec"+( parseInt(cont.value, 10));
-                cont.value = ( parseInt(cont.value, 10)+1).toString();
+                input.name ="sec"+cod_seccion;
+                input.id = "sec"+cod_seccion;
+               // cont.value = ( parseInt(cont.value, 10)+1).toString();
                 input.value = cod_seccion;
                 theForm.appendChild(input);
+         }
+         
+         function eliminarHiddenInput(cod_seccion){
+              var radios = document.getElementsByName('materiasPreinscritas');
+                    var asignatura;
+                    // loop through list of radio buttons
+                    for (var i=0, len=radios.length; i<len; i++) {
+                        if ( radios[i].checked ) { // radio checked?
+                            cod_seccion = radios[i].value; // if so, hold its value in val
+                            asignatura = radios[i].value;
+                            break; // and break out of for loop
+                        }
+                    }
+                    var input = document.getElementById("sec"+asignatura);
+                    if (input!=null)
+                        input.remove();
          }
           
         function preinscribir(){
@@ -257,7 +281,10 @@
                         }
                     }
                 }
+             
+                    eliminarHiddenInput(cod_seccion);
                     var materiaPreinsEliminada = document.getElementById("mp"+cod_seccion).remove();
+                    
                    var materiasDisponibles = document.getElementById("MateriasDisponibles");
 
                     var li = document.createElement("li");
@@ -353,7 +380,7 @@
 			<ol  id="MateriasDisponibles">
 			
 			</ol> 
-              <button type="button" class="btn btn-default" onclick="preinscribir()">Default</button>
+              <button type="button" class="btn btn-primary" onclick="preinscribir()">Preinscibir Materia</button>
 		</div>
         
 		<div class="col-md-6 column">
@@ -389,15 +416,13 @@
 			<ol id="MateriasPreinscritas">
 			
 			</ol> 
-              <button type="button" class="btn btn-default" onclick="cancelar_preinscripcion()">Default</button>
+              <button type="button" class="btn btn-danger" onclick="cancelar_preinscripcion()">Eliminar Materia</button>
 		</div>
 		
 	</div>
         <br><br><br><br>
 	<div class="row clearfix">
-		<div class="col-md-4 column">
-			 <button type="button" class="btn btn-default">Default</button>
-		</div>
+		
 		<div class="col-md-4 column">
             <form id="formInscribir" action="<?= base_url("index.php/alumno/inscribirSeccionesBD"); ?>" method="post" id="editar">
                         <input type="hidden" name = "cedula" value="<?= $alumno['cedula']; ?>">
@@ -406,8 +431,14 @@
             </form>
 			 
 		</div>
+        <div class="col-md-4 column">
+			 <button type="button" onclick="reiniciar()" class="btn btn-warning">Reiniciar</button>
+		</div>
 		<div class="col-md-4 column">
-			 <button type="button" class="btn btn-default">Default</button>
+			 <form action="<?= base_url("index.php/alumno/gestionAlumno"); ?>" method="post" id="editar">
+                            <input type="hidden" name = "cedula" value="<?= $alumno['cedula']; ?>">
+                            <button class="btn btn-danger" type="submit">Cancelar y Regresar</button></input>
+            </form>
 		</div>
 	</div>
 </div>
