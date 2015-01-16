@@ -32,7 +32,7 @@
        }
        
        public function addSeccion($seccion){
-           $query = $this->db->query("INSERT INTO seccion VALUES (cod_seccion,?,?,?)",$seccion);
+           $query = $this->db->query("INSERT INTO seccion VALUES (?,?,?,?)",$seccion);
            return $query;
        }
        
