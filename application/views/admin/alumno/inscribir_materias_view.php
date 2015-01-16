@@ -98,7 +98,9 @@
              return 1;
          
          }
-         
+         function revisarMateria(cod_seccion){
+          
+         }
          function colorear_tabla( horas, tipo){
 
        
@@ -137,10 +139,12 @@
                                                 var celda = document.getElementById((k*10 + columna).toString());
                                                 for (var z = 0 ; z < arregloCodSeccion.length ; z++){
                                                     if (arregloCodSeccion[z] == horas[item].cod_seccion){
-                                                        if (tipo == 1)
+                                                        if (tipo == 1 )
                                                             celda.style.backgroundColor  = arrayColores[z];
                                                         else
                                                             celda.style.backgroundColor ="white";
+                                                         
+                                                        
                                                     }
                                                 }
 
@@ -149,7 +153,7 @@
                                                         //celda.innerHTML = horas[item].cod_seccion;
                                                         for (itemxs in materias) {
                                                              if (horas[item].cod_seccion == materias[itemxs].cod_seccion){
-                                                                 celda.innerHTML =  materias[itemxs].asignatura;
+                                                                celda.innerHTML =  materias[itemxs].asignatura;
                                                                 break;
                                                              }
                                                         }
@@ -220,10 +224,21 @@
                             break; // and break out of for loop
                         }
                     }
+                
                 if (cod_seccion==-1)//no encontro codigo seleccionado
                     return;
             
-            
+     
+                     var radios = document.getElementsByName('materiasPreinscritas');
+                    var asignatura;
+                    // loop through list of radio buttons
+                    for (var i=0, len=radios.length; i<len; i++) {
+                        if ( radios[i].id == asignatura) { // radio checked?
+                             alert("Ya inscribio la materia: "+asignatura);
+                            return;
+                        }
+                    }
+                
                 var horarios = eval(<?php echo json_encode($horarios);?>);
                 for (item in horarios){
                     for (subitem in horarios[item]){
