@@ -24,14 +24,6 @@
            
        }
        
-       public function horasAsigSecc(){
-             $query = $this->db->query("SELECT asig.nro_horas
-                                        FROM seccion AS sec, asignatura AS asig
-                                        WHERE sec.cod_asig = asig.cod_asig
-                                            AND sec.cod_seccion = ?", $seccion);
-             return $query->result();       
-       }
-       
        function getSecciones(){
             $query = $this->db->query("SELECT  sec.cod_seccion, sec.cod_peri, sec.ci_profe, p.nombre, p.apellido, sec.cod_asig, asig.nombre as asig
                                         FROM seccion as sec, asignatura as asig, profesor as p 

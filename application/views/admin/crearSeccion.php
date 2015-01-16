@@ -320,6 +320,7 @@
 		</div>
 		<div class="col-md-4 column">
 			 <form id="formInscribirSeccion" action="<?= base_url("index.php/seccion/inscribirSecciones"); ?>" method="post" id="editar">
+<!--                        <input type="hidden" name = "flag" value="1">-->
                         <input type="hidden" name = "cedula" value="<?= $cedula_profesor; ?>">
                         <button class="btn btn-success" type="submit">Inscribir Seccion</button>
             </form>

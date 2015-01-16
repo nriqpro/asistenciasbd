@@ -101,34 +101,15 @@ function addSalon(){
 //    
 }
 function loadData(){
-    var ciprofe = document.getElementsByName("prof");
+    var ciest = document.getElementsByName("ci_est");
     var ci;
-    for (var i=0, len=ciprofe.length; i<len; i++) {
-            if ( ciprofe[i].checked ) { // radio checked?
-                 ci = parseInt(ciprofe[i].value);
+    for (var i=0, len=ciest.length; i<len; i++) {
+            if ( ciest[i].checked ) { // radio checked?
+                 ci = parseInt(ciest[i].value);
 //                alert(ciprofe[i].value);
                 break; // and break out of for loop
-            }
         }
-    var coda = document.getElementsByName("asig");
-    var codasig;
-    for (var i=0, len=coda.length; i<len; i++) {
-            if ( coda[i].checked ) { // radio checked?
-                 codasig = parseInt(coda[i].value);
-//                alert(codasig);
-                break; // and break out of for loop
-            }
-        }
-    var codp = document.getElementsByName("peri");
-    var codperi;
-    for (var i=0, len=codp.length; i<len; i++) {
-            if ( codp[i].checked ) { // radio checked?
-                 codperi = codp[i].value;
-//                alert(codp[i].value);
-                break; // and break out of for loop
-            }
-        }
-   
+    }
     var insertProfesor = document.getElementById("ci_profe");
     insertProfesor.value = ci;
 //    alert("profesor"+insertProfesor.value);
@@ -137,7 +118,6 @@ function loadData(){
 //    alert("periodo"+insertPeriodo.value);
     var insertAsig = document.getElementById("cod_asig");
     insertAsig.value = codasig;
-//    alert("asig"+insertAsig.value);
-////    }
+
 }
 //         </script>

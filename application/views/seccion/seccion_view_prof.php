@@ -3,8 +3,10 @@
     <div class="row clearfix">
         
          <?php if(isset($seccion)) {  
+            $i = 0;
               if(is_array($seccion) && count($seccion) ) {
-                foreach($seccion as $loop){ ?>
+                foreach($seccion as $loop){
+                    if($i==0){ ?>
 		<div class="jumbotron col-md-5 column">
 
 			<dl>
@@ -23,7 +25,7 @@
 			</dl> <address> </address>
             
 		</div>
-        <?php
+        <?php          $i=1; }
                         }
                     }
                 }

@@ -8,7 +8,7 @@
         <div class="col-md-4 column">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-                      <form action="<?= base_url("index.php/seccion/cargarAddSalonSecc"); ?>" method="post">
+<!--                      <form action="<?= base_url("index.php/seccion/cargarAddSalonSecc"); ?>" method="post">-->
                     <input type="hidden" name = "cod_seccion" id="cod_seccion" value=  <?= $loop->cod_seccion; ?>>   
 					<h3 class="panel-title">
 						Profesor: <?= $loop->nombre." ".$loop->apellido; ?>
@@ -31,6 +31,7 @@
                     </dl>     
                 </div>
 				<div class="panel-footer">
+                     Periodo: <?= $loop->cod_peri; ?>
 				</div>
 			  </div>
             </div>
@@ -112,13 +113,15 @@
           </div>
         
 			<div class="row">
+<!--
                 <div class="col-xs-6 col-md-2"></div>
 				<div class="col-xs-6 col-md-3"> 
                   <input type="submit" value="Añadir Salon" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
-        </form>    
-                <div class="col-xs-6 col-md-2"></div>
+-->
+<!--        </form>    -->
+                <div class="col-xs-6 col-md-4"></div>
 				<div class="col-xs-6 col-md-3">
-                    <a href="<?= base_url("index.php/seccion");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
+                    <a href="<?= base_url("index.php/seccion");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Regresar</a></div>
                 <div class="col-xs-6 col-md-2"></div>
 			</div>
         <script src="<?php echo base_url("assets/js/seccion.js"); ?>"></script>

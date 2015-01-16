@@ -18,11 +18,13 @@
             <div class="col-xs-12 col-sm-3 col-md-3">
                <button type="submit" class="btn btn-default">Buscar</button>
             </div>
+<!--
               <div class="col-xs-6 col-sm-6 col-md-6">
                       <a id="agregarAsig" href="<?= base_url("index.php/seccion/formularioSeccion");?>">
                 <button type="button" class="btn btn-success">Registrar seccion</button>
                 </a>  
              </div>
+-->
              
         </form>
         </div> 
@@ -57,13 +59,13 @@
                   <td>
 <!--                      <div class="btn-toolbar" role="toolbar">-->
                           <div class="btn-group">
-                             <form action="<?=  base_url("index.php/seccion/cargarEditarSec");?>" method="post" id="secciones">
+                             <form action="<?=  base_url("index.php/seccion/cargarEditarSec");?>" method="post" id="edit">
                                 <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
                                 <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
                                 <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
                                 <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
-                               <input class="btn btn-xs btn-primary" type="submit" value="Editar"></input>     
-                        </form> 
+                               <input class="btn btn-xs btn-primary" type="submit" id= "Editar" value="Editar"></input>     
+                        </form>
                         <form action="<?=  base_url("index.php/seccion/verHorarioSec");?>" method="post" id="secciones">
                           <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
                           <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
@@ -71,7 +73,7 @@
                           <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
                           <input class="btn btn-xs btn-success" type="submit" value="Horario"></input>
                         </form>
-                        <form action="<?=  base_url("index.php/seccion/asistenciaSec");?>" method="post" id="secciones">
+                        <form action="<?=  base_url("index.php/asistencia/asistenciaSec");?>" method="post" id="secciones">
                           <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
                           <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
                           <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
@@ -97,9 +99,16 @@
                       <?php echo $err; ?>
                     </div>
                 <?php  }
+                if(isset($succ)){?>
+                      <div class="alert alert-success col-lg-5 col-md-5" role="alert">
+                      <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                      <span class="sr-only">Mensaje:</span>
+                      <?php echo $succ; ?>
+                    </div>
+                 <?php }
                 ?>  
               </tbody>
             </table>
           </div>
-
+        <script src="<?php echo base_url("assets/js/seccion.js"); ?>"></script>
     </div>
