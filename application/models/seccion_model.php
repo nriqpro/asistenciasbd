@@ -27,12 +27,13 @@
        function getSecciones(){
             $query = $this->db->query("SELECT  sec.cod_seccion, sec.cod_peri, sec.ci_profe, p.nombre, p.apellido, sec.cod_asig, asig.nombre as asig
                                         FROM seccion as sec, asignatura as asig, profesor as p 
-                                        WHERE sec.cod_asig = asig.cod_asig and p.ci_profe = sec.ci_profe");
+                                        WHERE sec.cod_asig = asig.cod_asig and p.ci_profe = sec.ci_profe
+                                        ORDER BY sec.cod_seccion ASC;");
             return $query->result();
        }
        
        public function addSeccion($seccion){
-           $query = $this->db->query("INSERT INTO seccion VALUES (cod_seccion,?,?,?)",$seccion);
+           $query = $this->db->query("INSERT INTO seccion VALUES (?,?,?,?)",$seccion);
            return $query;
        }
        

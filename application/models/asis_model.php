@@ -7,7 +7,7 @@
         }
        
        public function getAsis($asis){
-           $query = $this->db->query("SELECT * from asisSeccion as ass where ass.cargada = 1 and ass.cod_seccion=?",$asis);
+           $query = $this->db->query("SELECT * from asisSeccion as ass where ass.cod_asis=? ORDER BY ass.fecha",$asis);
             return $query->result();
        }
        
