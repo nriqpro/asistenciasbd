@@ -11,7 +11,7 @@ class Asistencia extends CI_Controller{
     
     public function asistenciaSec(){
         $asis = $this->input->post('cod_seccion');
-        $query = $this->asis_model->getAsis($asis);
+        $query = $this->asis_model->getAsisSecc($asis);
         $data['actual'] = $this->periodo_model->getPeriodoActual();
         if($query == null)
             $data['err'] = "No existen asistencias cargadas.";

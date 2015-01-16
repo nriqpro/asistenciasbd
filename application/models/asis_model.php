@@ -11,6 +11,11 @@
             return $query->result();
        }
        
+       public function getAsisSecc($asis){
+           $query = $this->db->query("SELECT * from asisSeccion as ass where ass.cod_seccion=? ORDER BY ass.fecha",$asis);
+            return $query->result();
+       }
+
        function getAsist(){
             $query = $this->db->query("SELECT * from Asistencias as asis");
             return $query->result();
