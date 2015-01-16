@@ -91,7 +91,7 @@ class Asistencia extends CI_Controller{
                     echo "<br>";
 //                                        
                     }
-                
+                 }
 //            $query = $this->asis_model->asisAlumnos($cod_asis[count($asis)+1]);
 //            $query2 = $this->asis_model->inasistentes($asis);
 //            $seccion =  $this->seccion_model->getSeccion($sec);

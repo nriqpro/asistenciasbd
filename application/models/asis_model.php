@@ -7,12 +7,12 @@
         }
        
        public function getAsis($asis){
-           $query = $this->db->query("SELECT * from asisSeccion as ass where ass.cod_seccion=?",$asis);
+           $query = $this->db->query("SELECT * from asisSeccion as ass where ass.cargada = 1 and ass.cod_seccion=?",$asis);
             return $query->result();
        }
        
        function getAsist(){
-            $query = $this->db->query("SELECT * from Asistencias");
+            $query = $this->db->query("SELECT * from Asistencias as asis");
             return $query->result();
        }
        
