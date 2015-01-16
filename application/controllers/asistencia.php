@@ -64,7 +64,7 @@ class Asistencia extends CI_Controller{
             'cod_asis'  => $this->input->post('cod_asis'),
         );
         $data['asis'] = $this->alumno_model->getAlumnosBySeccion($asis['cod_seccion']);
-        $data['asistencia'] = $this->asis_model->getAsis($asis['cod_seccion']);
+        $data['asistencia'] = $this->asis_model->getAsis($asis['cod_asis']);
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('asistencia/form_asis_view', $data);
@@ -76,18 +76,17 @@ class Asistencia extends CI_Controller{
              'ci_est'  => $this->input->post('ci_est'),
         );
 
-        $cod_asis = $this->input->post('cod_asis');
+        $cod_asis = $this->input->post('cod_asis');  
         $sec = array('cod_seccion' => $this->input->post('cod_seccion'));
         $total = $this->input->post('contador');
-
+  
         $i=0;
         $ci = 0;
             if(is_array($asis) && count($asis)) {
                  for($i=0; $i<$total; $i++){
                      foreach($asis as $loop){                  
-                        $ci = $loop[$i];
-                        echo $ci;
-                         $data['asis'] = $this->asis_model->addAsisAlumno($ci, $cod_asis[0]);
+                        $ci = $loop[$i]; 
+                         $data['asis'] = $this->asis_model->addAsisAlumno($ci, $cod_asis);
                     echo "<br>";
 //                                        
                     }
