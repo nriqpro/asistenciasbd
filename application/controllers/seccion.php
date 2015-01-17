@@ -22,20 +22,6 @@ class Seccion extends CI_Controller{
         $this->load->view('admin/verSeccion',$data);
         $this->load->view('layouts/footer');
     }
-
-//    public function formularioSeccion(){
-//        $query = $this->profesor_model->getProfesores();
-//        $data['profesor'] = $query;
-//        $query = $this->asig_model->getAsignaturas();
-//        $data['asignaturas'] = $query;
-//        $query = $this->periodo_model->getPeriodos();
-//        $data['periodo'] = $query;
-//        $this->load->view('layouts/header');
-//        $this->load->view('layouts/sidebar');
-//        $this->load->view('admin/crearSeccion',$data);
-//        $this->load->view('layouts/footer');
-//    }
-    
     public function addSeccion(){
         $seccion = array(
             'cod_peri' => $this->input->post('cod_peri'),
@@ -82,8 +68,16 @@ class Seccion extends CI_Controller{
             'cod_asig'  => $this->input->post('cod_asig'),
             'cod_seccion'  => $this->input->post('cod_seccion'),
         );
+
+        $salon = array(
+            'hora_ini' => $this->input->post('hora_ini'),
+            'dia' => $this->input->post('dia'),
+            'cod_salon' => $this->input->post('cod_salon'),
+            'hora_fin' => $this->input->post('hora_fin'),
+            'cod_seccion'  => $this->input->post('cod_seccion'),
+        );
         $data['seccion']=$seccion;
-        $query = $this->seccion_model->updateSeccion($seccion);
+        $query = $this->seccion_model->updateSeccion($seccion, $salon);
         $data['actual'] = $this->periodo_model->getPeriodoActual();
         if($query ==NULL){
             $data['err'] = "Error, asegurese de que los datos esten registrados actualmente."    ;   

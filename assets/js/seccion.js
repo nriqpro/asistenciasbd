@@ -65,28 +65,33 @@ function addSalon(){
             selectHTML += "</select>";
             rows[i].cells[1].innerHTML = selectHTML;
 
-            var selectTimeIn = "";
-            selectTimeIn = "<input type='time' id='hin' name='hin'></input>";
+             var horas_inicio =    ["07:00:00","08:00:00","09:00:00","10:00:00","11:00:00","12:00:00","13:00:00","14:00:00","15:00:00",
+                               "16:00:00","17:00:00","18:00:00","19:00:00","20:00:00"];
+            var horas_fin = ["08:00:00","09:00:00","10:00:00","11:00:00","12:00:00","13:00:00","14:00:00","15:00:00",
+                               "16:00:00","17:00:00","18:00:00","19:00:00","20:00:00","21:00:00"];
 
+            var selectTimeIn = "";
+            selectTimeIn = "<select id='hin' class='form-control'>";
+            for(var a=0; a<horas_inicio.length; a++){
+                 selectTimeIn+= "<option value='"+horas_inicio[a]+"'>"+horas_inicio[a]+"</option>";
+            }
+             selectTimeIn+="</select>";
             rows[i].cells[2].innerHTML = selectTimeIn;
 
-            var selectTimeF = "";
-            selectTimeF = "<input type='time' id='hfin' name='hfin'></input>";
 
+            var selectTimeF = "";
+            selectTimeF = "<select id='hfin' class='form-control'>";
+             for(var b=0; b<horas_fin.length; b++){
+                 selectTimeF+= "<option value='"+horas_fin[b]+"'>"+horas_fin[b]+"</option>";
+            }
+            selectTimeF+="</select>";
             rows[i].cells[3].innerHTML = selectTimeF;
-//
-//
-//            rows[i].onclick = function() {
-////                    alert(this.cells[2].innerHTML);
-//                    if(this.cells[2].innerHTML > this.cells[3].innerHTML ){
-//                        alert("Hora de inicio no puede ser mayor que hora fin.");
-//                        this.cells[2].value = '';
-//                        this.cells[2].clear;
-//                        alert("safdgh");
-//                    }
-////                        this.cells[3].value = '--:--:--';
-//                }
-////            alert(i);
+
+
+             document.getElementById("cod_salon").value = document.getElementById("salonesOp").value;
+             document.getElementById("hora_ini").value = document.getElementById("hin").value;
+             document.getElementById("hora_fin").value = document.getElementById("hfin").value;
+             document.getElementById("dia").value = document.getElementById("dias").value;
             }
 //    
 }
@@ -127,7 +132,8 @@ function loadData(){
 //    alert("periodo"+insertPeriodo.value);
     var insertAsig = document.getElementById("cod_asig");
     insertAsig.value = codasig;
-//    alert("asig"+insertAsig.value);
+    alert(document.getElementById("hin").value);
+    alert(document.getElementById("hfin").value);
 ////    }
 }
 //         </script>

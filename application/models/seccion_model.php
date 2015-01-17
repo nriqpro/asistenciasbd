@@ -67,14 +67,11 @@
            );    
             return $query->result();
        }
-       public function updateSeccion($seccion){
-           $db_debug = $this->db->db_debug; //save setting
-
-           $this->db->db_debug = FALSE; 
+       public function updateSeccion($seccion, $salon){
+//           $this->db->trans_start();
            $query = $this->db->query("UPDATE seccion SET cod_peri=?,ci_profe=?, cod_asig=? WHERE cod_seccion=?",$seccion);
-
-           $this->db->db_debug = $db_debug;
-           
+           $query2 = $this->db->query("UPDATE r_seccion_salon SET hora_ini=?,dia=?,cod_salon=?,hora_fin=? WHERE cod_seccion=?",$salon);
+//           $this->db->trans_complete();
             return $query;
        }
        

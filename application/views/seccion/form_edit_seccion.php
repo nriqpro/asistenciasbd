@@ -59,7 +59,7 @@
                   <td><?=$loop->dia;?></td> 
                   <td><?= $loop->hora_ini; ?></td>     
                   <td><?= $loop->hora_fin; ?></td>
-                  <td>   <label class="radio" for="asig">
+                  <td>   <label class="radio" for="sa">
                   <input type="radio" name="sa" id="sa" value="<?=$loop->cod_salon;?>" checked="checked" tabindex="3">
                  <span class="glyphicon glyphicon-edit" aria-hidden="false" onclick="addSalon()"></span>  
                  <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>      
@@ -201,7 +201,11 @@
 				<div class="col-xs-6 col-md-3">
                   <input type="hidden" name = "cod_peri" id="cod_peri" >
                   <input type="hidden" name = "ci_profe" id= "ci_profe" >
-                  <input type="hidden" name = "cod_asig" id= "cod_asig">    
+                  <input type="hidden" name = "cod_asig" id= "cod_asig">
+                  <input type="hidden" name = "cod_salon" id= "cod_salon">
+                  <input type="hidden" name = "hora_ini" id= "hora_ini">
+                  <input type="hidden" name = "hora_fin" id= "hora_fin">
+                  <input type="hidden" name = "dia" id= "dia">
                   <input type="hidden" name = "cod_seccion" id="cod_seccion" value=  <?= $loop->cod_seccion; ?> >     
                   <input type="submit" onclick="loadData()" value="Guardar" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
     </form>    
