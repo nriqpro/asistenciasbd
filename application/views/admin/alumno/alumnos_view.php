@@ -112,6 +112,6 @@
                             echo "</div>";
                         }
                         else
-                            echo "Bienvenido realice una busqueda para que aqui aparezca el resultado de la misma gracias att: Enrique Y Asociada (MARY)";
+
                 ?>
     </div>

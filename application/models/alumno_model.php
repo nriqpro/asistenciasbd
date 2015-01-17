@@ -15,7 +15,7 @@
            return $query;
        }
        public function getAlumno($cedula){
-            $query = $this->db->query("SELECT * FROM alumno AS a WHERE a.ci_est =$cedula;");
+            $query = $this->db->query("SELECT * FROM alumno AS a WHERE a.ci_est =?",$cedula);
            return $query->result();
        }
        public function getAlumnosByCarrera($carrera){
