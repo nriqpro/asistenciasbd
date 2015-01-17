@@ -256,16 +256,6 @@
 			 
 		</div>
 	</div>
-<<<<<<< HEAD
-</div>
-=======
-          <?php
-        if (is_array($horario) && count($horario)){
-            foreach($horario as $loop){
-                echo $loop->cod_salon." ".$loop->dia." ".$loop->hora_ini." ".$loop->hora_fin." ".$loop->nombre."<br>";
-            }
 
-        }
-    ?>
 </div>
->>>>>>> origin/master
+
