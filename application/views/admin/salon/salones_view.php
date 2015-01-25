@@ -22,9 +22,9 @@
                               <td>".$loop->cod_salon."</td>";
                             echo  "<td>".$loop->capacidad."</td> ";
                             echo  "<td>";
-                            echo   "<form action=".base_url("index.php/salon/gestionSalon")." method=\"post\" id=\"salon\">";
+                            echo   "<form action=".base_url("index.php/salon/editarSalon")." method=\"post\" id=\"salon\">";
                             echo   "    <input type=\"hidden\" name = \"cod_salon\" value=\" ".$loop->cod_salon. " \">";
-                            echo   "      <button class=\"btn btn-xs btn-primary\" type=\"submit\">Ver</input>";
+                            echo   "      <button class=\"btn btn-xs btn-primary\" type=\"submit\">Editar</input>";
                             echo   "   </form>";
                             echo " </td>";
 

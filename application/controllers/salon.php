@@ -36,6 +36,25 @@ class Salon extends CI_Controller{
         $result = $this->Salon_model->addSalon($salon);
         $this->verSalones();
     }
+    
+    public function editarSalon(){
+        $data['salon'] = $this->input->post('cod_salon');
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/salon/form_edit_salon',$data);
+        $this->load->view('layouts/footer');
+    }
+    
+    public function updateSalon(){
+        $salon = array (
+           'capacidad' => $this->input->post('capacidad'),
+            'cod_salon' => $this->input->post('cod_salon')
+        );
+        
+        echo  "hola".$salon['cod_salon'];
+        $this->Salon_model->updateSalon($salon);
+        $this->verSalones();
+    }
 }
 
 ?>

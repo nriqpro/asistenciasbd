@@ -44,12 +44,52 @@ class Alumno extends CI_Controller{
         $this->index();
     }
     
+    public function editarAlumno(){
+        $cedula = $this->input->post("cedula");
+        $alumno = $this->Alumno_model->getAlumno($cedula);
+        
+//        foreach ($alumno as $a){
+//          echo   $a->ci_est."<br>";
+//           echo $a->nombre." ".$a->apellido."<br>";
+//          echo  $a->f_nac."<br>";
+//          echo  $a->sexo."<br>";
+//          echo  $a->direc."<br>";
+//        }
+//        
+       // echo $cedula;
+        $data['alumno'] = $alumno;
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('admin/alumno/form_edit_alumno',$data);
+        $this->load->view('layouts/footer');
+        
+    }
+    
+    public function updateAlumno(){
+           $alumno = array(
+            
+            'nombre' => $this->input->post('nombre'),
+            'sexo' => $this->input->post('sexo'),
+            'direccion' => $this->input->post('direccion'),
+            'apellido' => $this->input->post('apellido'),
+             'cedula' => $this->input->post('cedula')
+        );
+        
+        $this->Alumno_model->updateAlumno($alumno);
+        $this->verAlumnos();
+    }
     public function gestionAlumno(){
         $cedula = $this->input->post('cedula');
 
-
-        $data['alumno'] = $this->Alumno_model->getAlumno($cedula);
+        $alumno = $this->Alumno_model->getAlumno($cedula);
+        if ($alumno)
+            
+            $data['alumno'] = $alumno;
+        else
+           $data['err'] = "Alumno no encontrado";
+            
         $data['secciones'] = $this->Alumno_model->getInfoSecciones($cedula);
+       
 
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
@@ -60,15 +100,18 @@ class Alumno extends CI_Controller{
     public function buscarAlumnos(){
         $tipo = $this->input->post('tipo');
         $contenido = $this->input->post('contenido');
+        $err=null;
         
         if (strcasecmp($tipo,"Carrera")==0)
             $data['alumnos'] = $this->Alumno_model->getAlumnosByCarrera($contenido);
-            else if(strcasecmp($tipo,"Materia")==0)
-                $data['alumnos'] = $this->Alumno_model->getAlumnosByMateria($contenido);
+           else if(strcasecmp($tipo,"Materia")==0)
+                $data['alumnos'] = $this->Alumno_model->getAlumnosByMateria($contenido);         
                 else if(strcasecmp($tipo,"Seccion")==0) 
                     $data['alumnos'] = $this->Alumno_model->getAlumnosBySeccion($contenido);
+                
         
-        
+        if ($data['alumnos']==null)
+                $data['err']="Alumno no Encontrado";
        /* foreach($data['alumnos'] as $alumno){
             echo $alumno->nombre."<br>";
             }*/

@@ -5,11 +5,18 @@
 			<h3>
 				Gestion de Alumno
 			</h3>
+            <?php if(isset($err)) 
+                echo "<h2>Error Alumno no Encontrado</h2>"; 
+            else{
+            ?>
 		</div>
 	</div>
 	<div class="row clearfix">
-         <?php if( is_array($alumno) && count($alumno) ) {
-                                    foreach($alumno as $loop){
+
+        <?php
+       
+        if( is_array($alumno) && count($alumno) ) {
+                    foreach($alumno as $loop){
         $cedula_estudiante = $loop->ci_est;
         $nombre_estudiante =$loop->nombre." ".$loop->apellido; ?>
 		<div class="col-md-8 column">
@@ -74,5 +81,7 @@
                     </a>
 				</div>
 			</div>
-
+ <?php 
+            };
+?>
 </div>

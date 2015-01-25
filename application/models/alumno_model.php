@@ -18,6 +18,14 @@
             $query = $this->db->query("SELECT * FROM alumno AS a WHERE a.ci_est =?",$cedula);
            return $query->result();
        }
+       
+       public function updateAlumno($alumno){
+           $db_debug = $this->db->db_debug; //save setting
+
+           $this->db->db_debug = FALSE; 
+            $query = $this->db->query("UPDATE alumno SET nombre=?,sexo=?,direc=?,apellido=? WHERE ci_est =?",$alumno);
+           return $query;
+       }
        public function getAlumnosByCarrera($carrera){
            $query = $this->db->query(
                " SELECT a.ci_est,a.nombre,a.apellido,a.sexo 
