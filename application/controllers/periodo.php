@@ -30,12 +30,15 @@ class Periodo extends CI_Controller{
             'fin' => $this->input->post('fin')
         );
         $query = $this->periodo_model->getPeriodo($periodo['id']);
-        
-        if($query == NULL){
-            $data['periodo'] = $this->periodo_model->addPeriodo($periodo);
-        }
+        if($periodo['inicio'] > $periodo['fin'])
+                $data['err'] = "Fecha de inicio no puede ser mayor que fecha fin.";
         else{
-            $data['err'] = "Error, el codigo ya existe";   
+            if($query == NULL){
+                $data['periodo'] = $this->periodo_model->addPeriodo($periodo);
+            }
+            else{
+                $data['err'] = "Error, el codigo ya existe";
+            }
         }
         $data['periodo'] = $this->periodo_model->getPeriodos();
         $this->load->view('layouts/header');
@@ -66,11 +69,16 @@ class Periodo extends CI_Controller{
             'id' => $this->input->post('id'),
             'id_prev' => $this->input->post('id_prev') 
         );
-        $data['periodo']=$periodo;
-        $result = $this->periodo_model->updatePeriodo($periodo);
          
-        if($result == NULL){
-              $data['err'] = "Error, el codigo ya existe";   
+        if($periodo['inicio'] > $periodo['fin'])
+            $data['err'] = "Fecha de inicio no puede ser mayor que fecha fin.";
+        else{
+            $data['periodo']=$periodo;
+            $result = $this->periodo_model->updatePeriodo($periodo);
+
+            if($result == NULL){
+                  $data['err'] = "Error, el codigo ya existe";
+            }
         }
         $query = $this->periodo_model->getPeriodos();
         $data['periodo'] = $query;
@@ -84,7 +92,14 @@ class Periodo extends CI_Controller{
     
     public function getPeriodo(){
         $periodo= $this->input->post('id');
-        $data['periodo'] = $this->periodo_model->getPeriodo($periodo);
+        $query = $this->periodo_model->getPeriodo($periodo);
+        if($query == NULL){
+              $data['err'] = "Error, periodo no registrado.";
+              $query = $this->periodo_model->getPeriodos();
+              $data['periodo'] = $query;
+        }
+        else
+            $data['periodo'] = $query;
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verPeriodo',$data);

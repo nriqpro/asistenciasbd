@@ -6,7 +6,7 @@
                     <div class="col-lg-5 col-md-5">
 <!--                        Nombre-->
                         <label for="nombre" class="control-label">Nombre de la carrera:</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Ejemplo: Ingenieria" tabindex="1" required>
+                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Ejemplo: Ingenieria" tabindex="1" maxlength="20" required>
                         </div>
 					</div>
    

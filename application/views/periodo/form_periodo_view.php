@@ -6,7 +6,7 @@
                     <div class="col-lg-3 col-md-5">
 <!--                        Nombre-->
                         <label for="nombre" class="control-label">Nuevo codigo:</label>
-                        <input  type="text" name="id" id="id" class="form-control input-sm required" placeholder="2013-4" tabindex="1" required>
+                        <input  type="text" name="id" id="id" class="form-control input-sm required" placeholder="2013-4" tabindex="1" required maxlength="6">
                         <br>
 					   <div class="form-group-responsive">
                         <label for="inicio" class="control-label">Fecha de inicio:</label><br>

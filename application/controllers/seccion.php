@@ -22,6 +22,26 @@ class Seccion extends CI_Controller{
         $this->load->view('admin/verSeccion',$data);
         $this->load->view('layouts/footer');
     }
+    public function seccSancion(){
+        $seccion = array(
+            'cod_peri' => $this->input->post('cod_peri'),
+            'ci_profe' => $this->input->post('ci_profe'),
+            'cod_asig'  => $this->input->post('cod_asig'),
+            'cod_seccion'  => $this->input->post('cod_seccion'),
+        );
+        $query = $this->seccion_model->getSancionados($seccion['cod_seccion']);
+
+        if($query == NULL)
+            $data['err'] = "No hay sancionados";
+        else
+             $data['alumno'] = $query;
+        $data['seccion'] = $this->seccion_model->getSeccion($seccion['cod_seccion']);
+        $data['salon'] = $this->seccion_model->seccionSalon($seccion['cod_seccion']);
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('seccion/sancionados',$data);
+        $this->load->view('layouts/footer');
+    }
     public function addSeccion(){
         $seccion = array(
             'cod_peri' => $this->input->post('cod_peri'),

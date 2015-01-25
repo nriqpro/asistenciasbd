@@ -75,7 +75,16 @@ class Asignatura extends CI_Controller{
     
     public function cargarAsigBuscada(){
         $asignatura= $this->input->post('nombre');
-        $data['asignaturas'] = $this->asig_model->getAsig($asignatura);
+        $query = $this->asig_model->getAsig($asignatura);
+
+        if($query == null){
+            $data['err'] = "No existe la asignatura buscada.";
+            $query = $this->asig_model->getAsignaturas();
+            $data['asignaturas'] = $query;
+        }
+        else{
+            $data['asignaturas'] = $query;
+        }
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verAsig',$data);

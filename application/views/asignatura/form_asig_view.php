@@ -6,7 +6,7 @@
                     <div class="col-lg-5 col-md-5">
 <!--                        Nombre-->
                         <label for="nombre" class=" control-label">Nombre de la asignatura:</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Ejemplo: Calculo I" tabindex="1" required>
+                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Ejemplo: Calculo I" tabindex="1" maxlength="20" required>
 <!--                        Unidades de cred-->
                         <label for="creditos" class="control-label">Unidades de credito:</label>
                         <select name="creditos" class="form-control"  data-style="btn-primary">
@@ -35,7 +35,7 @@
         </form>
                 <div class="col-xs-6 col-md-2"></div>
 				<div class="col-xs-6 col-md-3">
-                    <a href="<?= base_url("index.php/admin/asignatura");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
+                    <a href="<?= base_url("index.php/asignaturas");?>" class="btn btn-warning btn-block btn-lg" tabindex="13">Cancelar</a></div>
                 <div class="col-xs-6 col-md-2"></div>
 			</div>
 		

@@ -320,7 +320,8 @@
 
 	<div class="row clearfix">
 		<div class="col-md-4 column">
-			 <button type="button" class="btn btn-default">Default</button>
+			 <a type="button" class="btn btn-default"  href="<?= base_url("index.php/profesor"); ?>"
+>Regresar</a>
 		</div>
 		<div class="col-md-4 column">
 			 <form id="formInscribirSeccion" action="<?= base_url("index.php/seccion/inscribirSecciones"); ?>" method="post" id="editar">

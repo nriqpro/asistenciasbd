@@ -94,4 +94,15 @@
             foreach ($query->result() as $loop)
                 return $loop->r+1;
        }
+
+       public function getSancionados($seccion){
+            $query = $this->db->query("SELECT rsa.ci_est, a.nombre, a.apellido, a.sexo
+                        FROM r_seccion_alumno AS rsa, seccion AS s, alumno AS a
+                        WHERE s.cod_seccion = rsa.cod_seccion
+                            AND a.ci_est = rsa.ci_est
+                            AND rsa.sancion = 1
+                            AND s.cod_seccion = ?",$seccion);
+           return $query->result();
+       }
+
    }

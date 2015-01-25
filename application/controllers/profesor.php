@@ -92,7 +92,16 @@ class Profesor extends CI_Controller{
     
       public function profesorByID(){
         $profesor= $this->input->post('cedula');
-        $data['profesor'] = $this->profesor_model->getProfesor($profesor);
+        $query =$this->profesor_model->getProfesor($profesor);
+
+        if($query == null){
+            $data['err'] = "Profesor no registrado.";
+            $query = $this->profesor_model->getProfesores();
+            $data['profesor'] = $query;
+        }
+        else
+            $data['profesor'] = $query;
+
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verProf', $data);

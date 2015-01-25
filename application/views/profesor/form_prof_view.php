@@ -12,7 +12,7 @@
 <!--                     <div class="col-xs-3 col-md-1"></div>    -->
                     <h4>Apellido:</h4>
 					<div class="form-group">
-                        <input type="text" name="apellido" id="apellido" class="form-control input-sm" placeholder="" tabindex="3" required>
+                        <input type="text" name="apellido" id="apellido" class="form-control input-sm" placeholder="" tabindex="3" maxlength="20" required>
 					</div>
                     <h4>Sexo:</h4>
 <!--					<div class="form-group">-->
@@ -29,11 +29,11 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
                     <h4>Nombre:</h4>
 					<div class="form-group">
-                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="" tabindex="2" required>
+                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="" maxlength="20" tabindex="2" required>
 					</div>
                     <h4>Dirección:</h4>
 					<div class="form-group">
-                        <input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="" tabindex="7" required>
+                        <input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="" tabindex="7" maxlength="40" required>
 					</div>
 
 				</div>

@@ -28,13 +28,19 @@ class Carrera extends CI_Controller{
 //            'id' => $this->input->post('cedula'),
             'nombre' => $this->input->post('nombre'),
         );
-        $data['carreras'] = $this->carrera_model->addCarrera($carreras);
-        $query = $this->carrera_model->getCarreras();
-        $data['carreras'] = $query;
-        $this->load->view('layouts/header');
-        $this->load->view('layouts/sidebar');
-        $this->load->view('admin/verCarrera',$data);
-        $this->load->view('layouts/footer');
+        $query = $this->carrera_model->getCarrera($carreras['nombre']);
+        if($query != NULL){
+            $data['err'] = "Carrera ya existe";
+        }
+        else{
+            $query = $this->carrera_model->addCarrera($carreras);
+        }
+            $query = $this->carrera_model->getCarreras();
+            $data['carreras'] = $query;
+            $this->load->view('layouts/header');
+            $this->load->view('layouts/sidebar');
+            $this->load->view('admin/verCarrera',$data);
+            $this->load->view('layouts/footer');
     }
     
     public function cargarEditarCarrera(){
@@ -57,8 +63,18 @@ class Carrera extends CI_Controller{
         );
 
         $data['carreras']=$carreras;
-        $result = $this->carrera_model->updateCarrera($carreras);
-        
+        $query = $this->carrera_model->getCarrera($carreras['nombre']);
+        foreach($query as $loop){
+        if($carreras['nombre'] != $loop->nombre){
+
+            if($query != NULL){
+                $data['err'] = "Carrera ya existe";
+            }
+            else{
+                 $result = $this->carrera_model->updateCarrera($carreras);
+            }
+        }
+        }
         $query = $this->carrera_model->getCarreras();
         $data['carreras'] = $query;
          
@@ -70,7 +86,14 @@ class Carrera extends CI_Controller{
     
       public function cargarCarBuscada(){
         $carreras= $this->input->post('nombreb');
-        $data['carreras'] = $this->carrera_model->getCarrera($carreras);
+        $query = $this->carrera_model->getCarrera($carreras);
+        $data['carreras'] = $query;
+
+        if($query == NULL){
+                $data['err'] = "No existe la carrera buscada.";
+                $query = $this->carrera_model->getCarreras();
+                $data['carreras'] = $query;
+        }
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/verCarrera', $data);

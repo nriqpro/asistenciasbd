@@ -80,6 +80,13 @@
                           <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
                           <input class="btn btn-xs btn-warning" type="submit" value="Asistencia"></input>
                         </form>
+                        <form action="<?=  base_url("index.php/seccion/seccSancion");?>" method="post" id="secciones">
+                          <input type="hidden" name = "cod_seccion" value="<?= $loop->cod_seccion; ?>">
+                          <input type="hidden" name = "cod_peri" value="<?= $loop->cod_peri; ?>">
+                          <input type="hidden" name = "ci_profe" value="<?= $loop->ci_profe; ?>">
+                          <input type="hidden" name = "cod_asig" value="<?= $loop->cod_asig; ?>">
+                          <input class="btn btn-xs btn-default" type="submit" value="Sancion"></input>
+                        </form>
                           </div>
 <!--                    </div>-->
                   </td>
