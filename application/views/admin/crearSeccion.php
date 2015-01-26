@@ -81,7 +81,7 @@
                                             return;
                                         }
                                         if (i == 13){
-                                            alert("Ups Su clase no puede culminar si inicia a esa hora");
+                                            alert("Ups! Su clase no puede culminar si inicia a esa hora");
                                             return;
                                         }
                                         else if (window.horas > 0){

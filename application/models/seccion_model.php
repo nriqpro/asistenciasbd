@@ -68,10 +68,15 @@
             return $query->result();
        }
        public function updateSeccion($seccion, $salon){
-//           $this->db->trans_start();
+           $db_debug = $this->db->db_debug;
+           $this->db->db_debug = false;
            $query = $this->db->query("UPDATE seccion SET cod_peri=?,ci_profe=?, cod_asig=? WHERE cod_seccion=?",$seccion);
-           $query2 = $this->db->query("UPDATE r_seccion_salon SET hora_ini=?,dia=?,cod_salon=?,hora_fin=? WHERE cod_seccion=?",$salon);
-//           $this->db->trans_complete();
+           if($salon['cod_salon'] != null){
+                $query2 = $this->db->query("UPDATE r_seccion_salon SET hora_ini=?,dia=?,cod_salon=?,hora_fin=? WHERE cod_seccion=? and cod_salon=? and hora_ini=? and dia=?",$salon);
+           if($query2 == null)
+               return $query2;
+           }
+           $this->db->db_debug = $db_debug;
             return $query;
        }
        

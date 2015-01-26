@@ -59,10 +59,11 @@
                   <td><?=$loop->dia;?></td> 
                   <td><?= $loop->hora_ini; ?></td>     
                   <td><?= $loop->hora_fin; ?></td>
-                  <td>   <label class="radio" for="sa">
-                  <input type="radio" name="sa" id="sa" value="<?=$loop->cod_salon;?>" checked="checked" tabindex="3">
+                  <td>   <label class="checkbox" for="sa">
+                  <input type="checkbox" name="sa" id="sa" value="<?=$loop->cod_salon;?>" checked="checked" tabindex="3">
                  <span class="glyphicon glyphicon-edit" aria-hidden="false" onclick="addSalon()"></span>  
-                 <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>      
+                 <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
+
                   </td>
 
                 </tr>
@@ -203,6 +204,9 @@
                   <input type="hidden" name = "ci_profe" id= "ci_profe" >
                   <input type="hidden" name = "cod_asig" id= "cod_asig">
                   <input type="hidden" name = "cod_salon" id= "cod_salon">
+                  <input type="hidden" name = "cod_salonv" id= "cod_salonv">
+                 <input type="hidden" name = "hora_iniv" id= "hora_iniv">
+                  <input type="hidden" name = "diav" id= "diav">
                   <input type="hidden" name = "hora_ini" id= "hora_ini">
                   <input type="hidden" name = "hora_fin" id= "hora_fin">
                   <input type="hidden" name = "dia" id= "dia">

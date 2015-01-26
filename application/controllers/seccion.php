@@ -95,6 +95,9 @@ class Seccion extends CI_Controller{
             'cod_salon' => $this->input->post('cod_salon'),
             'hora_fin' => $this->input->post('hora_fin'),
             'cod_seccion'  => $this->input->post('cod_seccion'),
+            'cod_salonv' => $this->input->post('cod_salonv'),
+            'hora_iniv' => $this->input->post('hora_iniv'),
+            'diav' => $this->input->post('diav'),
         );
         $data['seccion']=$seccion;
         $query = $this->seccion_model->updateSeccion($seccion, $salon);

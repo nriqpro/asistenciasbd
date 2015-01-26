@@ -39,8 +39,15 @@ function addSalon(){
      var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr'); 
      var tsalones = document.getElementById("tsalones").value;
      var salones = document.getElementsByName("idsalon");
-
+     var checkS = document.getElementsByName("sa");
+     var salon = document.getElementById("cod_salonv");
+     var dia = document.getElementById("diav");
+     var hi = document.getElementById("hora_iniv");
      for (i = 0; i < rows.length; i++) {
+         if(checkS[i].checked){
+          salon.value =  rows[i].cells[0].innerHTML;
+          dia.value =   rows[i].cells[1].innerHTML;
+          hi.value =  rows[i].cells[2].innerHTML;
            var selectSalon = "";
            selectSalon="<select id='salonesOp' class='form-control' >";
            for(var j=0; j<tsalones; j++){
@@ -88,11 +95,8 @@ function addSalon(){
             rows[i].cells[3].innerHTML = selectTimeF;
 
 
-             document.getElementById("cod_salon").value = document.getElementById("salonesOp").value;
-             document.getElementById("hora_ini").value = document.getElementById("hin").value;
-             document.getElementById("hora_fin").value = document.getElementById("hfin").value;
-             document.getElementById("dia").value = document.getElementById("dias").value;
             }
+     }
 //    
 }
 function loadData(){
@@ -132,8 +136,12 @@ function loadData(){
 //    alert("periodo"+insertPeriodo.value);
     var insertAsig = document.getElementById("cod_asig");
     insertAsig.value = codasig;
-    alert(document.getElementById("hin").value);
-    alert(document.getElementById("hfin").value);
+    document.getElementById("cod_salon").value = document.getElementById("salonesOp").value;
+    document.getElementById("hora_ini").value = document.getElementById("hin").value;
+    document.getElementById("hora_fin").value = document.getElementById("hfin").value;
+    document.getElementById("dia").value = document.getElementById("dias").value;
+
+//    alert(document.getElementById("cod_salonv").value);
 ////    }
 }
 //         </script>
