@@ -61,8 +61,7 @@
                   <td><?= $loop->hora_fin; ?></td>
                   <td>   <label class="checkbox" for="sa">
                   <input type="checkbox" name="sa" id="sa" value="<?=$loop->cod_salon;?>" checked="checked" tabindex="3">
-                 <span class="glyphicon glyphicon-edit" aria-hidden="false" onclick="addSalon()"></span>  
-                 <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
+                 <span class="glyphicon glyphicon-edit" aria-hidden="false" onclick="addSalon()"></span>
 
                   </td>
 
