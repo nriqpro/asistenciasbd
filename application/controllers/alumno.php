@@ -5,6 +5,7 @@ class Alumno extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('Alumno_model');
+        $this->load->model('Carrera_model');
     }
     
     public function index(){
@@ -25,7 +26,8 @@ class Alumno extends CI_Controller{
     public function formularioAlumno(){
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
-        $this->load->view('admin/alumno/form_alumno_view');
+        $data['carreras'] = $this->Carrera_model->getCarreras();
+        $this->load->view('admin/alumno/form_alumno_view',$data);
         $this->load->view('layouts/footer');
     }
 
@@ -39,9 +41,11 @@ class Alumno extends CI_Controller{
             'apellido1' => $this->input->post('apellido1')
         );
 
-
+        $this->db->trans_start();
         $result = $this->Alumno_model->addAlumno($alumno);
-        $this->index();
+        $this->Carrera_model->add_r_alumno_car($this->input->post('carrera'),$alumno['cedula']);
+        $this->db->trans_complete();
+        $this->verAlumnos();
     }
     
     public function editarAlumno(){
@@ -90,7 +94,11 @@ class Alumno extends CI_Controller{
             
         $data['secciones'] = $this->Alumno_model->getInfoSecciones($cedula);
        
-
+        $incritas = $this->Alumno_model->getSeccionesInscritasPeriodoActual($cedula);
+        if ($incritas!=null){
+            $data['inscrita'] = $incritas;
+            
+        }
         $this->load->view('layouts/header');
         $this->load->view('layouts/sidebar');
         $this->load->view('admin/alumno/gestionAlumno_view',$data);
@@ -176,6 +184,8 @@ class Alumno extends CI_Controller{
              $horarios[$i++]=$this->Alumno_model->addSecciones($cedula,$loop);
            $i++;
        }
+        if ($i ==2)
+            echo "No se recibio ninguna materia";
         
         
     }

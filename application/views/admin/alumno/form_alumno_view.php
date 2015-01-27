@@ -74,6 +74,19 @@
 				</div>
 
 			</div>
+              
+            <?php if (isset($carreras)){
+           echo "<div class=\"row\">";
+           echo  "<h4>Carrera a Cursar:</h4>";
+           echo  "  <div class=\"form-group\">";
+           echo  "      <select name=\"carrera\" class=\"form-control\"  data-style=\"btn-primary\">";
+                        foreach ($carreras as $c){
+           echo  "                    <option value=\"".$c->cod_c."\">".$c->nombre."</option>";             
+                        }
+           echo  "   </select>";
+           echo  "  </div>";
+           echo  " </div>";}
+            ?>
 
 
 <br>

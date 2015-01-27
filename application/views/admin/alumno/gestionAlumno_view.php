@@ -56,11 +56,16 @@
 	</div>
     <div class="row clearfix">
         <div class="col-md-3 column">
+                    <?php
+                if (isset($inscrita))
+                    echo "<button class=\"btn btn-primary\" type=\"submit\" disabled >Inscribir Materias</button>";
+                    else{?>
                     <form action="<?= base_url("index.php/alumno/inscribirMaterias"); ?>" method="post" id="horario">
                                <input type="hidden" name = "cedula" value="<?= $cedula_estudiante; ?>">
                                <input type="hidden" name = "nombre" value="<?= $nombre_estudiante; ?>">
-                                  <button class="btn btn-primary" type="submit">Inscribir Materias</input>
+                                  <button class="btn btn-primary" type="submit" >Inscribir Materias</button></input>
                     </form>
+                <?php } ?>
 				</div>
 				<div class="col-md-3 column">
                     <form action="<?= base_url("index.php/alumno/verHorarioAlumno"); ?>" method="post" id="horario">

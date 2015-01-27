@@ -48,6 +48,16 @@
             return $query->result();
        }
        
+       public function getSeccionesInscritasPeriodoActual($cedula){
+        $query = $this->db->query("    SELECT rsa.cod_seccion
+                                        FROM r_seccion_alumno AS rsa
+                                        WHERE rsa.cod_seccion IN (SELECT sec.cod_seccion
+	                                       FROM seccion AS sec
+	                                       WHERE sec.cod_peri = getPeriodoActual())
+	                                   AND rsa.ci_est = $cedula;");
+           return $query->result();
+       }
+       
         public function getAlumnosByMateria($materia){
            $query = $this->db->query(
               "SELECT a.ci_est,a.nombre,a.apellido,a.sexo 

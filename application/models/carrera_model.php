@@ -45,4 +45,8 @@
            $query = $this->db->query("UPDATE carrera SET nombre=? WHERE cod_c=?",$carreras);
             return $query;
        }
+       public function add_r_alumno_car($carrera,$alumno){
+           $query = $this->db->query("INSERT INTO r_alumno_car VALUES ($carrera,$alumno)");
+           return $query;
+       }
    }
