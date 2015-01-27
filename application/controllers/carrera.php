@@ -43,6 +43,60 @@ class Carrera extends CI_Controller{
             $this->load->view('layouts/footer');
     }
     
+     public function verAsigCarrera(){
+         $carreras = array(
+            'id' => $this->input->post('id'),
+            'nombre' => $this->input->post('nombre'),
+
+        );
+         $query = $this->carrera_model->getAsig($carreras['id']);
+         if($query == null)
+             $data['err'] = "No existen datos cargados.";
+        $data['asignaturas'] = $query;
+        $data['carreras']=$carreras;
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('carrera/ver_asig_carrera',$data);
+        $this->load->view('layouts/footer');
+    }
+     public function addAsigCarrera(){
+         $carreras = array(
+            'id' => $this->input->post('id'),
+            'nombre' => $this->input->post('nombre'),
+
+        );
+         $query = $this->carrera_model->getAsigNot($carreras['id']);
+         if($query == null)
+             $data['err'] = "Todas las asignaturas existentes estan asignadas.";
+        $data['asignaturas'] = $query;
+        $data['carreras']=$carreras;
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('carrera/form_asig_carrera',$data);
+        $this->load->view('layouts/footer');
+    }
+    public function addAsig(){
+         $carreras = array(
+            'id' => $this->input->post('id'),
+            'total' => $this->input->post('tasig'),
+        );
+        $i=0;
+
+        $variables =  $this->input->post();
+
+        for($i=0; $i<$carreras['total'];$i++){
+            $asig = $this->input->post($i);
+            if((!empty($asig)))
+                $query = $this->carrera_model->addAsig($carreras['id'],$asig);
+        }
+
+//
+        $data['carreras']= $this->carrera_model->getCarreras();
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/sidebar');
+        $this->load->view('carrera/ver_asig_carrera',$data);
+        $this->load->view('layouts/footer');
+    }
     public function cargarEditarCarrera(){
          $carreras = array(
             'id' => $this->input->post('id'),

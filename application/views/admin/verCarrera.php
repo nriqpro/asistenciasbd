@@ -39,6 +39,13 @@
                 <tr>
 <!--                  <td><?=$loop->cod_c;?></td>    -->
                   <td><?=$loop->nombre;?></td>
+                     <td>
+                        <form action="<?=  base_url("index.php/carrera/verAsigCarrera");?>" method="post" id="carrerasb">
+                            <input type="hidden" name = "id" value="<?= $loop->cod_c; ?>">
+                            <input type="hidden" name = "nombre" value="<?= $loop->nombre; ?>">
+                           <button class="btn btn-xs btn-primary" type="submit">Ver</input>
+                        </form>
+                    </td>
                   <td>
                       <form action="<?=  base_url("index.php/carrera/cargarEditarCarrera");?>" method="post" id="carrerasb">
                             <input type="hidden" name = "id" value="<?= $loop->cod_c; ?>">
@@ -46,6 +53,14 @@
                            <button class="btn btn-xs btn-primary" type="submit">Editar</input>
                         </form>
                   </td>
+
+                    <td>
+                        <form action="<?=  base_url("index.php/carrera/addAsigCarrera");?>" method="post" id="carrerasb">
+                            <input type="hidden" name = "id" value="<?= $loop->cod_c; ?>">
+                            <input type="hidden" name = "nombre" value="<?= $loop->nombre; ?>">
+                           <button class="btn btn-xs btn-success" type="submit">Asignaturas</input>
+                        </form>
+                    </td>
 
                 </tr>
                 <?php
